@@ -4,5 +4,4 @@
 *.mf
 *.class
 .idea/
-*.iml
 target
