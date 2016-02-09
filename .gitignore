@@ -3,5 +3,6 @@
 **/nbproject
 *.mf
 *.class
+*.iml
 .idea/
 target
