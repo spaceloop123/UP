@@ -45,10 +45,8 @@ public class Handler {
             List<Message> listItems = history.getList();
             gson.toJson(listItems, outputStreamWriter);
             outputStreamWriter.close();
-        } catch (FileNotFoundException e) {
-            System.err.println("hui");
         } catch (IOException e) {
-            System.err.println("hui 2");
+            System.err.println("Can't write chat history to " + fileName);
         }
     }
 
