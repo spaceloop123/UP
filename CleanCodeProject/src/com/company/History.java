@@ -23,7 +23,7 @@ public class History {
         try {
             return list.stream().filter(message -> message.getId().equals(id)).findFirst().get();
         } catch (NoSuchElementException e) {
-            return new Message("", "", 0l, "");
+            return Message.NOT_FOUND_MESSAGE_OBJECT;
         }
     }
 
