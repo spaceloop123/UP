@@ -1,0 +1,4 @@
+1455085896297: [findAuthor]Find messages by "User 1"
+1455085896299: [findAuthor]Found: 2
+1455085896300: [findAuthor]Find messages by "Sanya"
+1455085896301: [findAuthor]Found: 0
