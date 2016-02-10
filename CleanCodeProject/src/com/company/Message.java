@@ -103,7 +103,7 @@ public class Message {
         return result;
     }
 
-    public String write() {
+    public String getFormattedMessage() {
         return FORMATTER.format(new Date(timestamp)) + " " + author + ": " + message;
     }
 }

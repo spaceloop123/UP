@@ -17,6 +17,14 @@ public class Main {
         list = history.findRegEx("How.*");
         list.forEach(System.out::println);
 
+        history.remove("92dff7ee-00d7-41e5-a3db-e7189963ee3e");
+        history.remove("92dff7ee-00d7-41e5-a3db-e7189963ee3e");
+
         handler.writeJSON(JSON_FILE, history);
+
+        history.add(new Message("92dff7ee-00d7-41e5-a3db-e7189963ee3e", "User 1", "1454927239522", "Hello!"));
+        handler.writeJSON(JSON_FILE, history);
+
+        history.view();
     }
 }

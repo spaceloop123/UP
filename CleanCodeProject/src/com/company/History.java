@@ -33,6 +33,16 @@ public class History {
         }
     }
 
+    public Message remove(String id) {
+        if (map.containsKey(id)) {
+            Log.write("[remove]Message with id = " + id + " removed");
+            return map.remove(id);
+        } else {
+            Log.write("[remove]Message with id = " + id + " not found");
+            return Message.NOT_FOUND_MESSAGE_OBJECT;
+        }
+    }
+
     public Map<String, Message> getMap() {
         return map;
     }
@@ -72,8 +82,24 @@ public class History {
                 .stream()
                 .filter(s -> Pattern.compile(regex).matcher(map.get(s).getMessage()).matches())
                 .forEach(s1 -> fList.add(map.get(s1)));
-        Log.write("[findRegEx]Find messages matches = \"" + regex + "\"");
+        Log.write("[findRegEx]Find messages match = \"" + regex + "\"");
         Log.write("[findRegEx]Found: " + fList.size());
+        return fList;
+    }
+
+    public List<Message> findMessage(String timestampFrom, String timestampTo) {
+        Date from = new Date(timestampFrom);
+        Date to = new Date(timestampTo);
+        List<Message> fList = new ArrayList<>();
+        map.keySet()
+                .stream()
+                .filter(s -> (map.get(s).getTimestamp() >= from.getTime() && map.get(s).getTimestamp() <= to.getTime()))
+                .forEach(s1 -> fList.add(map.get(s1)));
+        Log.write("[findMessage]Find messages from \""
+                + Message.FORMATTER.format(from) + "\""
+                + " to "
+                + Message.FORMATTER.format(to) + "\"");
+        Log.write("[findMessage]Found: " + fList.size());
         return fList;
     }
 
@@ -89,5 +115,9 @@ public class History {
                 + Message.FORMATTER.format(to) + "\"");
         Log.write("[findMessage]Found: " + fList.size());
         return fList;
+    }
+
+    public void view() {
+        map.keySet().forEach(s -> System.out.println(map.get(s).getFormattedMessage()));
     }
 }

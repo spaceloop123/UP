@@ -1,6 +1,8 @@
-1455113369086: [findAuthor]Find messages by "User 1"
-1455113369088: [findAuthor]Found: 2
-1455113369091: [findMessage]Find messages contain = "Sanya"
-1455113369092: [findMessage]Found: 0
-1455113369096: [findRegEx]Find messages matches = "How.*"
-1455113369096: [findRegEx]Found: 1
+1455129915075: [findAuthor]Find messages by "User 1"
+1455129915077: [findAuthor]Found: 2
+1455129915080: [findMessage]Find messages contain = "Sanya"
+1455129915081: [findMessage]Found: 0
+1455129915084: [findRegEx]Find messages match = "How.*"
+1455129915085: [findRegEx]Found: 1
+1455129915086: [remove]Message with id = 92dff7ee-00d7-41e5-a3db-e7189963ee3e removed
+1455129915086: [remove]Message with id = 92dff7ee-00d7-41e5-a3db-e7189963ee3e not found
