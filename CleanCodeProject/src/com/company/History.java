@@ -26,6 +26,7 @@ public class History {
         try {
             return list.stream().filter(message -> message.getId().equals(id)).findFirst().get();
         } catch (NoSuchElementException e) {
+            Log.write("[get]Message with id = " + id + " not found");
             return Message.NOT_FOUND_MESSAGE_OBJECT;
         }
     }
@@ -44,12 +45,16 @@ public class History {
     public List<Message> findAuthor(String author) {
         List<Message> fList = new ArrayList<>();
         list.stream().filter(message -> message.getAuthor().equals(author)).forEach(fList::add);
+        Log.write("[findAuthor]Find messages by \"" + author + "\"");
+        Log.write("[findAuthor]Found: " + fList.size());
         return fList;
     }
 
     public List<Message> findMessage(String message) {
         List<Message> fList = new ArrayList<>();
         list.stream().filter(message1 -> message1.getMessage().contains(message)).forEach(fList::add);
+        Log.write("[findMessage]Find messages contain = \"" + message + "\"");
+        Log.write("[findMessage]Found: " + fList.size());
         return fList;
     }
 
@@ -57,6 +62,8 @@ public class History {
         List<Message> fList = new ArrayList<>();
         list.stream().filter(message1 -> {
             Matcher matcher = Pattern.compile(regex).matcher(message1.getMessage());
+            Log.write("[findRegEx]Find messages matches = \"" + regex + "\"");
+            Log.write("[findRegEx]Found: " + fList.size());
             return matcher.matches();
         }).forEach(fList::add);
         return fList;
@@ -67,6 +74,11 @@ public class History {
         list.stream()
                 .filter(message -> (message.getTimestamp() >= from.getTime() && message.getTimestamp() <= to.getTime()))
                 .forEach(fList::add);
+        Log.write("[findMessage]Find messages from \""
+                + Message.FORMATTER.format(from) + "\""
+                + " to "
+                + Message.FORMATTER.format(to) + "\"");
+        Log.write("[findMessage]Found: " + fList.size());
         return fList;
     }
 }

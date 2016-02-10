@@ -10,7 +10,7 @@ public class Message {
     private Long timestamp;
     private String message;
 
-    private transient final DateFormat FORMATTER = new SimpleDateFormat("[dd.MM.yyyy HH:mm:ss]"); //sout(FORMATTER.format(timestamp))
+    public static transient final DateFormat FORMATTER = new SimpleDateFormat("[dd.MM.yyyy HH:mm:ss]"); //sout(FORMATTER.format(timestamp))
     public static transient final Message NOT_FOUND_MESSAGE_OBJECT = new Message("", "", 0l, "");
 
     public Message(String id, String author, Long timestamp, String message) {
