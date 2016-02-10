@@ -14,10 +14,14 @@ public class Message {
     public static transient final Message NOT_FOUND_MESSAGE_OBJECT = new Message("", "", 0l, "");
 
     public Message(String id, String author, Long timestamp, String message) {
-        this.id = id;
-        this.author = author;
-        this.timestamp = timestamp;
-        this.message = message;
+        try {
+            this.id = id;
+            this.author = author;
+            this.timestamp = timestamp;
+            this.message = message;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public Message(String id, String author, String timestamp, String message) {

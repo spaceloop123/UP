@@ -12,7 +12,9 @@ public class Main {
 
         List<Message> list = history.findAuthor("User 1");
         list.forEach(System.out::println);
-        list = history.findAuthor("Sanya");
+        list = history.findMessage("Sanya");
+        list.forEach(System.out::println);
+        list = history.findRegEx("How.*");
         list.forEach(System.out::println);
 
         handler.writeJSON(JSON_FILE, history);

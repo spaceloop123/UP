@@ -11,7 +11,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 public class Handler {
@@ -42,7 +44,9 @@ public class Handler {
         try {
             Writer outputStreamWriter = new OutputStreamWriter(new FileOutputStream(fileName));
             //List<Message> listItems = Collections.synchronizedList(history.getList());
-            List<Message> listItems = history.getList();
+            Map<String, Message> map = history.getMap();
+            List<Message> listItems = new ArrayList<>();
+            map.keySet().forEach(s -> listItems.add(map.get(s)));
             gson.toJson(listItems, outputStreamWriter);
             outputStreamWriter.close();
         } catch (IOException e) {

@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
 public class Log {
-    private static final String LOG_FILE = String.valueOf("files/logfile.txt");
+    private static final String LOG_FILE = "files/logfile.txt";
     private static final Path PATH = Paths.get(".", LOG_FILE);
 
     static {
