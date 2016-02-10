@@ -27,9 +27,9 @@ public class Handler {
     public void readJSON(String fileName, History history) {
         try {
             Reader inputStreamReader = new InputStreamReader(new FileInputStream(fileName));
-            //List<Message> listItemsDes = Collections.synchronizedList(gson.fromJson(new JsonReader(inputStreamReader), itemsListType));
-            List<Message> listItemsDes = gson.fromJson(new JsonReader(inputStreamReader), itemsListType);
-            listItemsDes.forEach(history::add);
+            //List<Message> list = Collections.synchronizedList(gson.fromJson(new JsonReader(inputStreamReader), itemsListType));
+            List<Message> list = gson.fromJson(new JsonReader(inputStreamReader), itemsListType);
+            list.forEach(history::add);
             inputStreamReader.close();
         } catch (FileNotFoundException e) {
             System.err.println("File " + fileName + " not found");
