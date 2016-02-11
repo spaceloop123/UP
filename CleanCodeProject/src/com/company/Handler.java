@@ -44,7 +44,7 @@ public class Handler {
         try {
             Writer outputStreamWriter = new OutputStreamWriter(new FileOutputStream(fileName));
             //List<Message> listItems = Collections.synchronizedList(history.getList());
-            Map<String, Message> map = history.getMap();
+            Map<Long, Message> map = history.getMap();
             List<Message> listItems = new ArrayList<>();
             map.keySet().forEach(s -> listItems.add(map.get(s)));
             gson.toJson(listItems, outputStreamWriter);

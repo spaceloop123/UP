@@ -4,46 +4,56 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 public class History {
-    private Map<String, Message> map;
+    private Map<Long, Message> map;
 
     public History() {
-        map = new LinkedHashMap<>();
+        map = new TreeMap<>(Long::compareTo);
     }
 
     public void add(Message message) {
-        map.put(message.getId(), message);
+        map.put(message.getTimestamp(), message);
     }
 
     public void add(String s) {
         Message message = new Message(s.split(";"));
-        map.put(message.getId(), message);
+        map.put(message.getTimestamp(), message);
     }
 
     public Message get(String id) {
         try {
+            Long lId = Long.parseLong(id);
             return map.entrySet()
                     .stream()
-                    .filter(entry -> entry.getKey().equals(id))
+                    .filter(entry -> entry.getKey().equals(lId))
                     .findFirst()
                     .get()
                     .getValue();
         } catch (NoSuchElementException e) {
             Log.write("[get]Message with id = " + id + " not found");
             return Message.NOT_FOUND_MESSAGE_OBJECT;
-        }
-    }
-
-    public Message remove(String id) {
-        if (map.containsKey(id)) {
-            Log.write("[remove]Message with id = " + id + " removed");
-            return map.remove(id);
-        } else {
-            Log.write("[remove]Message with id = " + id + " not found");
+        } catch (NumberFormatException e) {
+            Log.write("[get]NumberFormatException for id = " + id);
             return Message.NOT_FOUND_MESSAGE_OBJECT;
         }
     }
 
-    public Map<String, Message> getMap() {
+    public Message remove(String id) {
+        try {
+            Long lId = Long.parseLong(id);
+            if (map.containsKey(lId)) {
+                Log.write("[remove]Message with id = " + id + " removed");
+                return map.remove(lId);
+            } else {
+                Log.write("[remove]Message with id = " + id + " not found");
+                return Message.NOT_FOUND_MESSAGE_OBJECT;
+            }
+        } catch (NumberFormatException e) {
+            Log.write("[get]NumberFormatException for id = " + id);
+            return Message.NOT_FOUND_MESSAGE_OBJECT;
+        }
+    }
+
+    public Map<Long, Message> getMap() {
         return map;
     }
 
@@ -88,12 +98,12 @@ public class History {
     }
 
     public List<Message> findMessage(String timestampFrom, String timestampTo) {
-        Date from = new Date(timestampFrom);
-        Date to = new Date(timestampTo);
+        Long from = Long.parseLong(timestampFrom);
+        Long to = Long.parseLong(timestampTo);
         List<Message> fList = new ArrayList<>();
         map.keySet()
                 .stream()
-                .filter(s -> (map.get(s).getTimestamp() >= from.getTime() && map.get(s).getTimestamp() <= to.getTime()))
+                .filter(s -> (map.get(s).getTimestamp() >= from && map.get(s).getTimestamp() <= to))
                 .forEach(s1 -> fList.add(map.get(s1)));
         Log.write("[findMessage]Find messages from \""
                 + Message.FORMATTER.format(from) + "\""
@@ -118,6 +128,6 @@ public class History {
     }
 
     public void view() {
-        map.keySet().forEach(s -> System.out.println(map.get(s).getFormattedMessage()));
+        map.keySet().forEach(aLong -> System.out.println(map.get(aLong).getFormattedMessage()));
     }
 }

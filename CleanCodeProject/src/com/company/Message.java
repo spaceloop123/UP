@@ -2,6 +2,7 @@ package com.company;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.Date;
 
 public class Message {
@@ -10,18 +11,14 @@ public class Message {
     private Long timestamp;
     private String message;
 
-    public static transient final DateFormat FORMATTER = new SimpleDateFormat("[dd.MM.yyyy HH:mm:ss]"); //sout(FORMATTER.format(timestamp))
+    public static transient final DateFormat FORMATTER = new SimpleDateFormat("[dd.MM.yyyy HH:mm:ss]");
     public static transient final Message NOT_FOUND_MESSAGE_OBJECT = new Message("", "", 0l, "");
 
     public Message(String id, String author, Long timestamp, String message) {
-        try {
-            this.id = id;
-            this.author = author;
-            this.timestamp = timestamp;
-            this.message = message;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        this.id = id;
+        this.author = author;
+        this.timestamp = timestamp;
+        this.message = message;
     }
 
     public Message(String id, String author, String timestamp, String message) {
@@ -104,6 +101,8 @@ public class Message {
     }
 
     public String getFormattedMessage() {
-        return FORMATTER.format(new Date(timestamp)) + " " + author + ": " + message;
+        Instant instant = Instant.ofEpochMilli(timestamp);
+        Date dateFromInstant = Date.from(instant);
+        return FORMATTER.format(dateFromInstant) + " " + author + ": " + message;
     }
 }
