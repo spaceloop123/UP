@@ -1,10 +1,10 @@
-1455205985279: [findAuthor]Find messages by "User 1"
-1455205985281: [findAuthor]Found: 2
-1455205985284: [findMessage]Find messages contain = "Sanya"
-1455205985285: [findMessage]Found: 0
-1455205985289: [findRegEx]Find messages match = "How.*"
-1455205985290: [findRegEx]Found: 1
-1455205985291: [remove]Message with id = 1454927239522 removed
-1455205985292: [remove]Message with id = 1454927239522 not found
-1455205985295: [findMessage]Find messages from "[08.02.2016 13:27:20]" to [08.02.2016 13:27:25]"
-1455205985295: [findMessage]Found: 2
+1455210799145: [findAuthor]Find messages by "User 1"
+1455210799147: [findAuthor]Found: 2
+1455210799151: [findMessage]Find messages contain = "Sanya"
+1455210799151: [findMessage]Found: 0
+1455210799161: [findRegEx]Find messages match = "How.*"
+1455210799162: [findRegEx]Found: 1
+1455210799163: [remove]Message with id = 1454927239522 removed
+1455210799163: [remove]Message with id = 1454927239522 not found
+1455210799169: [findMessage]Find messages from "[08.02.2016 13:27:20]" to [08.02.2016 13:27:25]"
+1455210799169: [findMessage]Found: 2

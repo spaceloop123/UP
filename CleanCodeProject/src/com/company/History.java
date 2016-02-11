@@ -16,7 +16,10 @@ public class History {
 
     public void add(String s) {
         Message message = new Message(s.split(";"));
-        map.put(message.getTimestamp(), message);
+        if (map.containsKey(message.getTimestamp())) {
+            Log.write("[add]" + message + " already in map");
+        } else
+            map.put(message.getTimestamp(), message);
     }
 
     public Message get(String id) {
