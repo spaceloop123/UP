@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Logger;
 
 import java.io.IOException;
 import java.nio.charset.Charset;

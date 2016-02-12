@@ -1,4 +1,4 @@
-package com.company;
+package com.company.domain;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

@@ -1,33 +1,42 @@
-package com.company;
+package com.company.domain;
+
+import com.company.logger.Log;
 
 import java.util.*;
 import java.util.regex.Pattern;
 
 public class History {
-    private Map<Long, Message> map;
+    private Map<String, Message> map;
 
     public History() {
-        map = new TreeMap<>(Long::compareTo);
+        map = new LinkedHashMap<>();
     }
 
     public void add(Message message) {
-        map.put(message.getTimestamp(), message);
+        map.put(message.getId(), message);
     }
 
     public void add(String s) {
         Message message = new Message(s.split(";"));
-        if (map.containsKey(message.getTimestamp())) {
+        if (map.containsKey(message.getId())) {
             Log.write("[add]" + message + " already in map");
         } else
-            map.put(message.getTimestamp(), message);
+            map.put(message.getId(), message);
+    }
+
+    public void add(String author, Long timestamp, String text) {
+        String id = UUID.randomUUID().toString();
+        if (map.containsKey(id)) {
+            Log.write("[add]" + id + " already in map");
+        } else
+            map.put(id, new Message(id, author, timestamp, text));
     }
 
     public Message get(String id) {
         try {
-            Long lId = Long.parseLong(id);
             return map.entrySet()
                     .stream()
-                    .filter(entry -> entry.getKey().equals(lId))
+                    .filter(entry -> entry.getKey().equals(id))
                     .findFirst()
                     .get()
                     .getValue();
@@ -42,10 +51,9 @@ public class History {
 
     public Message remove(String id) {
         try {
-            Long lId = Long.parseLong(id);
-            if (map.containsKey(lId)) {
+            if (map.containsKey(id)) {
                 Log.write("[remove]Message with id = " + id + " removed");
-                return map.remove(lId);
+                return map.remove(id);
             } else {
                 Log.write("[remove]Message with id = " + id + " not found");
                 return Message.NOT_FOUND_MESSAGE_OBJECT;
@@ -56,8 +64,8 @@ public class History {
         }
     }
 
-    public Map<Long, Message> getMap() {
-        return map;
+    public List<Message> getSortedList() {
+        return this.sort();
     }
 
     @Override
@@ -130,7 +138,14 @@ public class History {
         return fList;
     }
 
+    private List<Message> sort() {
+        List<Message> list = new ArrayList<>(map.values());
+        Collections.sort(list, (message, t1) -> message.getTimestamp().compareTo(t1.getTimestamp()));
+        return list;
+    }
+
     public void view() {
-        map.keySet().forEach(aLong -> System.out.println(map.get(aLong).getFormattedMessage()));
+        List<Message> list = this.sort();
+        list.forEach(message -> System.out.println(message.getFormattedMessage()));
     }
 }
