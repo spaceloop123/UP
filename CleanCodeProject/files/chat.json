@@ -16,5 +16,17 @@
     "author": "User 1",
     "timestamp": 1454927241059,
     "message": "How are you?"
+  },
+  {
+    "id": "250c08ab-3f1a-46c6-8ef6-f3ef437c2b31",
+    "author": "Sanya",
+    "timestamp": 1454927241159,
+    "message": "Test"
+  },
+  {
+    "id": "6c551d73-fdcb-4b4e-b93c-99365f1d96e9",
+    "author": "Sanya",
+    "timestamp": 1454927244159,
+    "message": "Test"
   }
 ]

@@ -1,15 +1,19 @@
 package com.company;
 
+import com.company.domain.History;
+import com.company.domain.Message;
+import com.company.listener.JSONHandler;
+import com.company.listener.Listener;
+
 import java.util.List;
-import java.util.Map;
 
 public class Main {
     private static final String JSON_FILE = String.valueOf("files/chat.json");
 
     public static void main(String[] args) {
-        Handler handler = new Handler();
+        Listener listener = new JSONHandler();
         History history = new History();
-        handler.readJSON(JSON_FILE, history);
+        listener.read(JSON_FILE, history);
 
         history.view();
         System.out.println();
@@ -29,9 +33,11 @@ public class Main {
         list = history.findMessage("1454927240054", "1454927245922");
         list.forEach(System.out::println);
 
+//        history.add("Sanya", 1454927244159l, "Test");
         history.view();
 
-        handler.writeJSON(JSON_FILE, history);
+        listener.write(JSON_FILE, history);
+
     }
 
 }
