@@ -1,6 +1,6 @@
 package com.company.domain;
 
-import com.company.logger.Log;
+import com.company.log.Log;
 
 import java.util.*;
 import java.util.regex.Pattern;
