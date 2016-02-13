@@ -3,6 +3,7 @@ package com.company.domain;
 import com.company.log.Level;
 import com.company.log.Log;
 
+import java.time.Instant;
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -36,8 +37,9 @@ public class History {
         return (string.length() > 140);
     }
 
-    public void add(String author, Long timestamp, String text) {
+    public void add(String author, String text) {
         String id = UUID.randomUUID().toString();
+        Long timestamp = Date.from(Instant.now()).getTime();
         if (map.containsKey(id)) {
             Log.write(History.class.getSimpleName()
                     + ": id = \"" + id + "\" already in map", Level.METHOD);
@@ -99,7 +101,7 @@ public class History {
         return list;
     }
 
-    public void view() {
+    public void show() {
         List<Message> list = this.sort();
         list.forEach(message -> System.out.println(message.getFormattedMessage()));
     }

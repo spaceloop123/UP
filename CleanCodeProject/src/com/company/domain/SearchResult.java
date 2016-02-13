@@ -31,10 +31,14 @@ public class SearchResult {
         Log.write(stringBuilder.toString(), level);
     }
 
+    public boolean isEmpty() {
+        return list.isEmpty();
+    }
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        list.forEach(message -> stringBuilder.append(message).append("\n"));
+        list.forEach(message -> stringBuilder.append(message.getFormattedMessage()).append("\n"));
         return stringBuilder.toString();
     }
 }

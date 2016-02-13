@@ -1,5 +1,6 @@
 package com.company.log;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -10,12 +11,29 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
+import java.util.Properties;
 
 public class Log {
-    private static final String LOG_FILE = "files/logfile.txt";
-    private static final Path PATH = Paths.get(".", LOG_FILE);
+    private static final String properties = "src/com/company/resources/config.properties";
+    private static String LOG_FILE;
+    private static Path PATH;
     private static final DateFormat FORMATTER = new SimpleDateFormat("[dd.MM.yyyy HH:mm:ss] ");
     private static StringBuilder stringBuilder = new StringBuilder();
+
+    static {
+        FileInputStream fis;
+        Properties property = new Properties();
+        try {
+            fis = new FileInputStream(properties);
+            property.load(fis);
+
+            LOG_FILE = property.getProperty("log_file_name");
+            PATH = Paths.get(".", LOG_FILE);
+        } catch (IOException e) {
+            Log.write("Can't open " + properties, Level.EXCEPTION);
+        }
+
+    }
 
     static {
         try {
