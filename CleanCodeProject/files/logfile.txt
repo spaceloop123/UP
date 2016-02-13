@@ -1,10 +1,10 @@
-1455275532308: [findAuthor]Find messages by "User 1"
-1455275532311: [findAuthor]Found: 2
-1455275532314: [findMessage]Find messages contain = "Sanya"
-1455275532315: [findMessage]Found: 0
-1455275532321: [findRegEx]Find messages match = "How.*"
-1455275532322: [findRegEx]Found: 1
-1455275532323: [remove]Message with id = 1454927239522 not found
-1455275532323: [remove]Message with id = 1454927239522 not found
-1455275532328: [findMessage]Find messages from "[08.02.2016 13:27:20]" to [08.02.2016 13:27:25]"
-1455275532328: [findMessage]Found: 4
+[13.02.2016 20:26:40] [METHOD]History: Find message(s) by "User 1"
+[13.02.2016 20:26:40] [METHOD]History: Found: 2
+[13.02.2016 20:26:40] [METHOD]History: Find messages contain = "Sanya"
+[13.02.2016 20:26:40] [METHOD]History: Found: 0
+[13.02.2016 20:26:40] [METHOD]History: Find messages match = "How.*"
+[13.02.2016 20:26:40] [METHOD]History: Found: 1
+[13.02.2016 20:26:40] [METHOD]History: Message with id = "92dff7ee-00d7-41e5-a3db-e7189963ee3e" removed
+[13.02.2016 20:26:40] [EXCEPTION]History: Message with id = "92dff7ee-00d7-41e5-a3db-e7189963ee3e" not found
+[13.02.2016 20:26:40] [METHOD]History: Find messages from "[08.02.2016 13:27:20]" to [08.02.2016 13:27:25]"
+[13.02.2016 20:26:40] [METHOD]History: Found: 4
