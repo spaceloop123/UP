@@ -61,8 +61,9 @@ public class ConsoleInteraction implements HistoryInteraction {
         while (true) {
             try {
                 while ((line = bufferedReader.readLine()) != null) {
-                    if (line.equals("8"))
+                    if (line.equals("8")) {
                         return;
+                    }
                     parseCommand(line);
                 }
             } catch (NumberFormatException e) {
@@ -70,7 +71,7 @@ public class ConsoleInteraction implements HistoryInteraction {
             } catch (IOException e) {
                 System.err.println(e.getMessage());
             }
-            printCommands();
+
         }
     }
 
@@ -94,26 +95,35 @@ public class ConsoleInteraction implements HistoryInteraction {
         switch (Integer.parseInt(line)) {
             case 1:
                 show();
+                printCommands();
                 break;
             case 2:
                 add();
+                printCommands();
                 break;
             case 3:
                 delete();
+                printCommands();
                 break;
             case 4:
                 searchAuthor();
+                printCommands();
                 break;
             case 5:
                 searchKeyword();
+                printCommands();
                 break;
             case 6:
                 searchRegex();
+                printCommands();
                 break;
             case 7:
                 showPeriod();
+                printCommands();
                 break;
             default:
+                printCommands();
+                throw new NumberFormatException();
         }
     }
 
@@ -127,22 +137,25 @@ public class ConsoleInteraction implements HistoryInteraction {
 
     private void add() throws IOException {
         System.out.println("Enter author : ");
-        String author = bufferedReader.readLine();
-        if (this.ifWrongInput(author))
-            throw new NumberFormatException();
+        String author;
+        while (ifWrongInput(author = bufferedReader.readLine())) {
+            System.out.println("Enter correct author : ");
+        }
         System.out.println("Enter text : ");
-        String text = bufferedReader.readLine();
-        if (this.ifWrongInput(text))
-            throw new NumberFormatException();
+        String text;
+        while (ifWrongInput(text = bufferedReader.readLine())) {
+            System.out.println("Enter correct text : ");
+        }
         history.add(author, text);
         System.out.println("Success");
     }
 
     private void delete() throws IOException {
         System.out.println("Enter id : ");
-        String id = bufferedReader.readLine();
-        if (this.ifWrongInput(id))
-            throw new NumberFormatException();
+        String id;
+        while (ifWrongInput(id = bufferedReader.readLine())) {
+            System.out.println("Enter correct id : ");
+        }
         if (history.get(id).equals(Message.NOT_FOUND_MESSAGE_OBJECT))
             System.err.println("Cannot find message with this id");
         else {
@@ -153,9 +166,10 @@ public class ConsoleInteraction implements HistoryInteraction {
 
     private void searchAuthor() throws IOException {
         System.out.println("Enter author : ");
-        String author = bufferedReader.readLine();
-        if (this.ifWrongInput(author))
-            throw new NumberFormatException();
+        String author;
+        while (ifWrongInput(author = bufferedReader.readLine())) {
+            System.out.println("Enter correct author : ");
+        }
         SearchResult result = history.findAuthor(author);
         if (result.isEmpty())
             System.err.println("Cannot find any messages from " + author);
@@ -165,9 +179,10 @@ public class ConsoleInteraction implements HistoryInteraction {
 
     private void searchKeyword() throws IOException {
         System.out.println("Enter key word(s) : ");
-        String keyword = bufferedReader.readLine();
-        if (this.ifWrongInput(keyword))
-            throw new NumberFormatException();
+        String keyword;
+        while (ifWrongInput(keyword = bufferedReader.readLine())) {
+            System.out.println("Enter correct key word(s) : ");
+        }
         SearchResult result = history.findMessage(keyword);
         if (result.isEmpty())
             System.err.println("Cannot find any messages with \"" + keyword + "\"");
@@ -177,9 +192,10 @@ public class ConsoleInteraction implements HistoryInteraction {
 
     private void searchRegex() throws IOException {
         System.out.println("Enter regular expression : ");
-        String regex = bufferedReader.readLine();
-        if (this.ifWrongInput(regex))
-            throw new NumberFormatException();
+        String regex;
+        while (ifWrongInput(regex = bufferedReader.readLine())) {
+            System.out.println("Enter correct regular expression : ");
+        }
         SearchResult result = history.findRegEx(regex);
         if (result.isEmpty())
             System.err.println("Cannot find any messages match \"" + regex + "\"");

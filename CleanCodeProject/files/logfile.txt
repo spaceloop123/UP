@@ -1,2 +1,2 @@
-[13.02.2016 22:30:06] [METHOD]History: Find messages contain = "Hello"
-[13.02.2016 22:30:06] [METHOD]History: Found: 1
+[14.02.2016 12:50:54] [METHOD]History: Find messages match = "h.-"
+[14.02.2016 12:50:54] [METHOD]History: Found: 0
