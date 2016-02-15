@@ -12,6 +12,9 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Properties;
 import java.util.regex.Pattern;
 
@@ -204,6 +207,46 @@ public class ConsoleInteraction implements HistoryInteraction {
     }
 
     private void showPeriod() throws IOException {
-        System.out.println("Period");
+        System.out.println("Enter date from (format : \"day.mounth.year\" or \"day.mounth.year hour:minute:second\") : ");
+        String from;
+        while (ifWrongDateInput(from = bufferedReader.readLine()) || ifWrongInput(from)) {
+            System.out.println("Enter date from (format : \"day.mounth.year\" or \"day.mounth.year hour:minute:second\") : ");
+        }
+        System.out.println("Enter date to (format : \"day.mounth.year\" or \"day.mounth.year hour:minute:second\") : ");
+        String to;
+        while (ifWrongDateInput(to = bufferedReader.readLine()) || ifWrongInput(to)) {
+            System.out.println("Enter date to (format : \"day.mounth.year\" or \"day.mounth.year hour:minute:second\") : ");
+        }
+        SimpleDateFormat simpleDateFormat;
+        if (isFullFormat(from))
+            simpleDateFormat = new SimpleDateFormat("dd.M.yyyy hh:mm:ss");
+        else
+            simpleDateFormat = new SimpleDateFormat("dd.M.yyyy");
+        try {
+            Date dateFrom = simpleDateFormat.parse(from);
+            Date dateTo = simpleDateFormat.parse(to);
+            SearchResult result = history.findMessage(dateFrom.getTime(), dateTo.getTime());
+            if (result.isEmpty())
+                System.err.println("Cannot find any messages from \""
+                        + simpleDateFormat.format(dateFrom) + "\"" + "to \"" + simpleDateFormat.format(dateTo) + "\"");
+            else
+                System.out.println(result);
+        } catch (ParseException | NumberFormatException e) {
+            System.out.println("Wrong data format");
+        }
+
+    }
+
+    private boolean isFullFormat(String string) {
+        return (Pattern.compile("\\s*[0-9]{1,2}.[0-9]{1,2}.[0-9]{4}\\s+[0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}")
+                .matcher(string)
+                .matches());
+    }
+
+    private boolean ifWrongDateInput(String string) {
+        return !(Pattern.compile("(\\s*[0-9]{1,2}.[0-9]{1,2}.[0-9]{4})|" +
+                "(\\s*[0-9]{1,2}.[0-9]{1,2}.[0-9]{4}\\s+[0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2})")
+                .matcher(string)
+                .matches());
     }
 }

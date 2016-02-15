@@ -136,33 +136,17 @@ public class History {
         return searchResult;
     }
 
-    public SearchResult findMessage(String timestampFrom, String timestampTo) {
-        Long from = Long.parseLong(timestampFrom);
-        Long to = Long.parseLong(timestampTo);
+    public SearchResult findMessage(Long timestampFrom, Long timestampTo) {
         SearchResult searchResult = new SearchResult(History.class.getSimpleName());
         map.keySet()
                 .stream()
-                .filter(s -> (map.get(s).getTimestamp() >= from && map.get(s).getTimestamp() <= to))
+                .filter(s -> (map.get(s).getTimestamp() >= timestampFrom && map.get(s).getTimestamp() <= timestampTo))
                 .forEach(s1 -> searchResult.add(map.get(s1)));
         searchResult.log(com.company.log.Level.METHOD,
                 "Find messages from \""
-                        + Message.FORMATTER.format(from) + "\""
+                        + Message.FORMATTER.format(timestampFrom) + "\""
                         + " to "
-                        + Message.FORMATTER.format(to) + "\"");
-        return searchResult;
-    }
-
-    public SearchResult findMessage(Date from, Date to) {
-        SearchResult searchResult = new SearchResult(History.class.getSimpleName());
-        map.keySet()
-                .stream()
-                .filter(s -> (map.get(s).getTimestamp() >= from.getTime() && map.get(s).getTimestamp() <= to.getTime()))
-                .forEach(s1 -> searchResult.add(map.get(s1)));
-        searchResult.log(com.company.log.Level.METHOD,
-                "Find messages from \""
-                        + Message.FORMATTER.format(from) + "\""
-                        + " to "
-                        + Message.FORMATTER.format(to) + "\"");
+                        + Message.FORMATTER.format(timestampTo) + "\"");
         return searchResult;
     }
 }

@@ -1,2 +1,2 @@
-[14.02.2016 12:50:54] [METHOD]History: Find messages match = "h.-"
-[14.02.2016 12:50:54] [METHOD]History: Found: 0
+[15.02.2016 20:43:36] [METHOD]History: Find messages from "[07.06.10007 00:00:00]" to [12.12.1212 00:00:00]"
+[15.02.2016 20:43:36] [METHOD]History: Found: 0
