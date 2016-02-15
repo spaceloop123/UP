@@ -84,14 +84,14 @@ public class ConsoleInteraction implements HistoryInteraction {
     }
 
     private void printCommands() {
-        System.out.println("1) Show chat history");
-        System.out.println("2) Add new message");
-        System.out.println("3) Delete message by its ID");
-        System.out.println("4) Search by author");
-        System.out.println("5) Search by keyword");
-        System.out.println("6) Search by regex");
-        System.out.println("7) Show chat history at some time");
-        System.out.println("8) Close");
+        safePrintln("1) Show chat history");
+        safePrintln("2) Add new message");
+        safePrintln("3) Delete message by its ID");
+        safePrintln("4) Search by author");
+        safePrintln("5) Search by keyword");
+        safePrintln("6) Search by regex");
+        safePrintln("7) Show chat history at some time");
+        safePrintln("8) Close");
     }
 
     private void parseCommand(String line) throws NumberFormatException, IOException {
@@ -139,83 +139,83 @@ public class ConsoleInteraction implements HistoryInteraction {
     }
 
     private void add() throws IOException {
-        System.out.println("Enter author : ");
+        safePrintln("Enter author : ");
         String author;
         while (ifWrongInput(author = bufferedReader.readLine())) {
-            System.out.println("Enter correct author : ");
+            safePrintln("Enter correct author : ");
         }
-        System.out.println("Enter text : ");
+        safePrintln("Enter text : ");
         String text;
         while (ifWrongInput(text = bufferedReader.readLine())) {
-            System.out.println("Enter correct text : ");
+            safePrintln("Enter correct text : ");
         }
         history.add(author, text);
-        System.out.println("Success");
+        safePrintln("Success");
     }
 
     private void delete() throws IOException {
-        System.out.println("Enter id : ");
+        safePrintln("Enter id : ");
         String id;
         while (ifWrongInput(id = bufferedReader.readLine())) {
-            System.out.println("Enter correct id : ");
+            safePrintln("Enter correct id : ");
         }
         if (history.get(id).equals(Message.NOT_FOUND_MESSAGE_OBJECT))
             System.err.println("Cannot find message with this id");
         else {
             history.remove(id);
-            System.out.println("Success");
+            safePrintln("Success");
         }
     }
 
     private void searchAuthor() throws IOException {
-        System.out.println("Enter author : ");
+        safePrintln("Enter author : ");
         String author;
         while (ifWrongInput(author = bufferedReader.readLine())) {
-            System.out.println("Enter correct author : ");
+            safePrintln("Enter correct author : ");
         }
         SearchResult result = history.findAuthor(author);
         if (result.isEmpty())
             System.err.println("Cannot find any messages from " + author);
         else
-            System.out.println(result);
+            safePrintln(result);
     }
 
     private void searchKeyword() throws IOException {
-        System.out.println("Enter key word(s) : ");
+        safePrintln("Enter key word(s) : ");
         String keyword;
         while (ifWrongInput(keyword = bufferedReader.readLine())) {
-            System.out.println("Enter correct key word(s) : ");
+            safePrintln("Enter correct key word(s) : ");
         }
         SearchResult result = history.findMessage(keyword);
         if (result.isEmpty())
             System.err.println("Cannot find any messages with \"" + keyword + "\"");
         else
-            System.out.println(result);
+            safePrintln(result);
     }
 
     private void searchRegex() throws IOException {
-        System.out.println("Enter regular expression : ");
+        safePrintln("Enter regular expression : ");
         String regex;
         while (ifWrongInput(regex = bufferedReader.readLine())) {
-            System.out.println("Enter correct regular expression : ");
+            safePrintln("Enter correct regular expression : ");
         }
         SearchResult result = history.findRegEx(regex);
         if (result.isEmpty())
             System.err.println("Cannot find any messages match \"" + regex + "\"");
         else
-            System.out.println(result);
+            safePrintln(result);
     }
 
     private void showPeriod() throws IOException {
-        System.out.println("Enter date from (format : \"day.mounth.year\" or \"day.mounth.year hour:minute:second\") : ");
+        safePrintln("Enter date from (format : \"day.mounth.year\" or \"day.mounth.year hour:minute:second\") : ");
         String from;
         while (ifWrongDateInput(from = bufferedReader.readLine()) || ifWrongInput(from)) {
-            System.out.println("Enter date from (format : \"day.mounth.year\" or \"day.mounth.year hour:minute:second\") : ");
+            safePrintln("Enter date from (format : \"day.mounth.year\" or \"day.mounth.year hour:minute:second\") : ");
         }
-        System.out.println("Enter date to (format : \"day.mounth.year\" or \"day.mounth.year hour:minute:second\") : ");
+        safePrintln("Enter date to (format : \"day.mounth.year\" or \"day.mounth.year hour:minute:second\") : ");
         String to;
         while (ifWrongDateInput(to = bufferedReader.readLine()) || ifWrongInput(to)) {
-            System.out.println("Enter date to (format : \"day.mounth.year\" or \"day.mounth.year hour:minute:second\") : ");
+            safePrintln("Enter date to (format : \"day.mounth.year\" or \"day.mounth.year hour:minute:second\") : ");
         }
         SimpleDateFormat simpleDateFormat;
         if (isFullFormat(from))
@@ -230,9 +230,9 @@ public class ConsoleInteraction implements HistoryInteraction {
                 System.err.println("Cannot find any messages from \""
                         + simpleDateFormat.format(dateFrom) + "\"" + "to \"" + simpleDateFormat.format(dateTo) + "\"");
             else
-                System.out.println(result);
+                safePrintln(result);
         } catch (ParseException | NumberFormatException e) {
-            System.out.println("Wrong data format");
+            safePrintln("Wrong data format");
         }
 
     }
@@ -248,5 +248,11 @@ public class ConsoleInteraction implements HistoryInteraction {
                 "(\\s*[0-9]{1,2}.[0-9]{1,2}.[0-9]{4}\\s+[0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2})")
                 .matcher(string)
                 .matches());
+    }
+
+    private void safePrintln(Object o) {
+        synchronized (System.out) {
+            System.out.println(o);
+        }
     }
 }
