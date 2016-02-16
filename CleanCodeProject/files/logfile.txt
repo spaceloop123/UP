@@ -1,2 +1,0 @@
-[15.02.2016 20:56:30] [METHOD]History: Find messages from "[21.07.1114 00:00:00]" to [13.12.1223 00:00:00]"
-[15.02.2016 20:56:30] [METHOD]History: Found: 0
