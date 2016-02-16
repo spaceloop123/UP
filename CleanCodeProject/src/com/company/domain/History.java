@@ -22,8 +22,10 @@ public class History {
         if (map.containsKey(message.getId())) {
             Log.write(History.class.getSimpleName()
                     + ": id = \"" + message.getId() + "\" already in map", Level.METHOD);
-        } else
+        } else {
             map.put(message.getId(), message);
+            Log.write("Added new Message " + message, Level.METHOD);
+        }
     }
 
     public void add(String author, String text) {
@@ -32,8 +34,11 @@ public class History {
         if (map.containsKey(id)) {
             Log.write(History.class.getSimpleName()
                     + ": id = \"" + id + "\" already in map", Level.METHOD);
-        } else
-            map.put(id, new Message(id, author, timestamp, text));
+        } else {
+            Message message = new Message(id, author, timestamp, text);
+            map.put(id, message);
+            Log.write("Added new Message " + message, Level.METHOD);
+        }
     }
 
     public Message get(String id) {

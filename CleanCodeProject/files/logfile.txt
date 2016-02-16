@@ -1,2 +1,12 @@
-[16.02.2016 21:46:32] [METHOD]SearchEngine: Find message(s) by "Sanya"
-[16.02.2016 21:46:32] [METHOD]SearchEngine: Found: 3
+[16.02.2016 23:32:20] [METHOD]Added new Message Message{id="92dff7ee-00d7-41e5-a3db-e7189963ee3e", author="User 1", timestamp="1454927239522", message="Hello!"}
+[16.02.2016 23:32:20] [METHOD]Added new Message Message{id="46f408b2-72cb-4307-b6e6-95a8515eb7c0", author="User 2", timestamp="1454927240054", message="Hi!"}
+[16.02.2016 23:32:20] [METHOD]Added new Message Message{id="8a253b16-e934-4cd6-8d1d-f631ac7a8e44", author="User 1", timestamp="1454927241059", message="How are you?"}
+[16.02.2016 23:32:20] [METHOD]Added new Message Message{id="250c08ab-3f1a-46c6-8ef6-f3ef437c2b31", author="Sanya", timestamp="1454927241159", message="Test"}
+[16.02.2016 23:32:20] [METHOD]Added new Message Message{id="6c551d73-fdcb-4b4e-b93c-99365f1d96e9", author="Sanya", timestamp="1454927244159", message="Test"}
+[16.02.2016 23:32:20] [METHOD]Added new Message Message{id="e51cf565-db34-4160-8fe3-a6a520ab58b0", author="Alex", timestamp="1455391065297", message="Yo guys"}
+[16.02.2016 23:32:20] [METHOD]Added new Message Message{id="291a9e45-7734-4dd8-801d-c37e386a6c81", author="Oleg", timestamp="1455442676811", message="ldfg l erl ,"}
+[16.02.2016 23:32:20] [METHOD]Added new Message Message{id="0ecf9bf7-99c3-4f65-9768-e66651c2082f", author="Sanya", timestamp="1455442920596", message="test"}
+[16.02.2016 23:32:20] [METHOD]Added new Message Message{id="408d9501-2381-4b5f-af80-3ec314132534", author="Test", timestamp="1455614599790", message="dfg dfgdf"}
+[16.02.2016 23:32:20] [METHOD]Added new Message Message{id="de5e5399-9260-464e-ae50-255752ecfbdd", author="Karina", timestamp="1455653089044", message="trst"}
+[16.02.2016 23:32:20] [METHOD]Added new Message Message{id="0fb4fdd7-8ffc-4313-8904-d38437ad3c9c", author="Roma", timestamp="1455654644128", message="ger"}
+[16.02.2016 23:32:32] [METHOD]Added new Message Message{id="227ac5df-d36e-4675-b74b-815d4ea0025c", author="Pasha", timestamp="1455654752227", message="gerkmdsg"}

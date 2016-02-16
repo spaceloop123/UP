@@ -159,9 +159,9 @@ public class ConsoleInteraction implements HistoryInteraction {
         while (ifWrongInput(id = bufferedReader.readLine())) {
             safePrintln("Enter correct id : ");
         }
-        if (history.get(id).equals(Message.NOT_FOUND_MESSAGE_OBJECT))
+        if (history.get(id).equals(Message.NOT_FOUND_MESSAGE_OBJECT)) {
             safeErrPrintln("Cannot find message with this id");
-        else if (history.isEmpty()) {
+        } else if (history.isEmpty()) {
             safeErrPrintln("Cannot delete message, chat history is empty");
         } else {
             history.remove(id);

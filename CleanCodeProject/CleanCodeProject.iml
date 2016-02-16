@@ -16,5 +16,18 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://C:/apache-log4j-2.5-bin" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://C:/apache-log4j-2.5-bin" />
+        </SOURCES>
+        <jarDirectory url="file://C:/apache-log4j-2.5-bin" recursive="false" />
+        <jarDirectory url="file://C:/apache-log4j-2.5-bin" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
   </component>
 </module>
