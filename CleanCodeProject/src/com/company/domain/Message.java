@@ -21,13 +21,6 @@ public class Message {
         this.message = message;
     }
 
-    public Message(String id, String author, String timestamp, String message) {
-        this.id = id;
-        this.author = author;
-        this.timestamp = Long.parseLong(timestamp);
-        this.message = message;
-    }
-
     public Message(String[] strings) {
         this.id = strings[0];
         this.author = strings[1];
@@ -39,32 +32,16 @@ public class Message {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getAuthor() {
         return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
     public Long getTimestamp() {
         return timestamp;
-    }
-
-    public void setTimestamp(Long timestamp) {
-        this.timestamp = timestamp;
     }
 
     @Override
@@ -84,10 +61,10 @@ public class Message {
 
         Message message1 = (Message) o;
 
-        if (id != null ? !id.equals(message1.id) : message1.id != null) return false;
-        if (author != null ? !author.equals(message1.author) : message1.author != null) return false;
-        if (timestamp != null ? !timestamp.equals(message1.timestamp) : message1.timestamp != null) return false;
-        return !(message != null ? !message.equals(message1.message) : message1.message != null);
+        return !(id != null ? !id.equals(message1.id) : message1.id != null)
+                && !(author != null ? !author.equals(message1.author) : message1.author != null)
+                && !(timestamp != null ? !timestamp.equals(message1.timestamp) : message1.timestamp != null)
+                && !(message != null ? !message.equals(message1.message) : message1.message != null);
 
     }
 

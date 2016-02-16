@@ -2,16 +2,20 @@ package com.company.domain;
 
 import com.company.log.Level;
 import com.company.log.Log;
+import com.company.search.SearchEngine;
+import com.company.search.SearchProvider;
+import com.company.search.SearchResult;
 
 import java.time.Instant;
 import java.util.*;
-import java.util.regex.Pattern;
 
 public class History {
     private Map<String, Message> map;
+    private SearchProvider searchProvider;
 
     public History() {
         map = new LinkedHashMap<>();
+        searchProvider = new SearchEngine();
     }
 
     public void add(Message message) {
@@ -31,10 +35,6 @@ public class History {
             Message message = new Message(strings);
             map.put(message.getId(), message);
         }
-    }
-
-    private boolean ifLongMessage(String string) {
-        return (string.length() > 140);
     }
 
     public void add(String author, String text) {
@@ -84,15 +84,15 @@ public class History {
         }
     }
 
-    public List<Message> getSortedList() {
-        return this.sort();
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         map.keySet().forEach(s -> sb.append(map.get(s).toString()).append("\n"));
         return sb.toString();
+    }
+
+    public List<Message> getSortedList() {
+        return this.sort();
     }
 
     private List<Message> sort() {
@@ -106,47 +106,23 @@ public class History {
         list.forEach(message -> System.out.println(message.getFormattedMessage()));
     }
 
-    public SearchResult findAuthor(String author) {
-        SearchResult searchResult = new SearchResult(History.class.getSimpleName());
-        map.keySet()
-                .stream()
-                .filter(s -> map.get(s).getAuthor().equals(author))
-                .forEach(s1 -> searchResult.add(map.get(s1)));
-        searchResult.log(com.company.log.Level.METHOD, "Find message(s) by \"" + author + "\"");
-        return searchResult;
+    public boolean isEmpty() {
+        return map.isEmpty();
     }
 
-    public SearchResult findMessage(String message) {
-        SearchResult searchResult = new SearchResult(History.class.getSimpleName());
-        map.keySet()
-                .stream()
-                .filter(s -> map.get(s).getMessage().contains(message))
-                .forEach(s1 -> searchResult.add(map.get(s1)));
-        searchResult.log(com.company.log.Level.METHOD, "Find messages contain = \"" + message + "\"");
-        return searchResult;
+    public SearchResult findAuthor(String author) {
+        return searchProvider.findAuthor(author, map);
+    }
+
+    public SearchResult findMessage(String keyword) {
+        return searchProvider.findMessage(keyword, map);
     }
 
     public SearchResult findRegEx(String regex) {
-        SearchResult searchResult = new SearchResult(History.class.getSimpleName());
-        map.keySet()
-                .stream()
-                .filter(s -> Pattern.compile(regex).matcher(map.get(s).getMessage()).matches())
-                .forEach(s1 -> searchResult.add(map.get(s1)));
-        searchResult.log(com.company.log.Level.METHOD, "Find messages match = \"" + regex + "\"");
-        return searchResult;
+        return searchProvider.findRegEx(regex, map);
     }
 
     public SearchResult findMessage(Long timestampFrom, Long timestampTo) {
-        SearchResult searchResult = new SearchResult(History.class.getSimpleName());
-        map.keySet()
-                .stream()
-                .filter(s -> (map.get(s).getTimestamp() >= timestampFrom && map.get(s).getTimestamp() <= timestampTo))
-                .forEach(s1 -> searchResult.add(map.get(s1)));
-        searchResult.log(com.company.log.Level.METHOD,
-                "Find messages from \""
-                        + Message.FORMATTER.format(timestampFrom) + "\""
-                        + " to "
-                        + Message.FORMATTER.format(timestampTo) + "\"");
-        return searchResult;
+        return searchProvider.findMessage(timestampFrom, timestampTo, map);
     }
 }

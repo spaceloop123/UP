@@ -1,0 +1,2 @@
+[16.02.2016 14:29:18] [METHOD]SearchEngine: Find messages from "[12.12.1222 00:00:00]" to [13.12.5434 00:00:00]"
+[16.02.2016 14:29:18] [METHOD]SearchEngine: Found: 9

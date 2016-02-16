@@ -1,5 +1,6 @@
-package com.company.domain;
+package com.company.search;
 
+import com.company.domain.Message;
 import com.company.log.Level;
 import com.company.log.Log;
 

@@ -2,11 +2,11 @@ package com.company.interaction;
 
 import com.company.domain.History;
 import com.company.domain.Message;
-import com.company.domain.SearchResult;
 import com.company.listener.JSONHandler;
 import com.company.listener.Listener;
 import com.company.log.Level;
 import com.company.log.Log;
+import com.company.search.SearchResult;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -70,9 +70,9 @@ public class ConsoleInteraction implements HistoryInteraction {
                     parseCommand(line);
                 }
             } catch (NumberFormatException e) {
-                System.err.println("Wrong input");
+                safeErrPrintln("Wrong input");
             } catch (IOException e) {
-                System.err.println(e.getMessage());
+                safeErrPrintln(e.getMessage());
             }
 
         }
@@ -160,8 +160,10 @@ public class ConsoleInteraction implements HistoryInteraction {
             safePrintln("Enter correct id : ");
         }
         if (history.get(id).equals(Message.NOT_FOUND_MESSAGE_OBJECT))
-            System.err.println("Cannot find message with this id");
-        else {
+            safeErrPrintln("Cannot find message with this id");
+        else if (history.isEmpty()) {
+            safeErrPrintln("Cannot delete message, chat history is empty");
+        } else {
             history.remove(id);
             safePrintln("Success");
         }
@@ -174,10 +176,11 @@ public class ConsoleInteraction implements HistoryInteraction {
             safePrintln("Enter correct author : ");
         }
         SearchResult result = history.findAuthor(author);
-        if (result.isEmpty())
-            System.err.println("Cannot find any messages from " + author);
-        else
+        if (result.isEmpty()) {
+            safeErrPrintln("Cannot find any messages from " + author);
+        } else {
             safePrintln(result);
+        }
     }
 
     private void searchKeyword() throws IOException {
@@ -187,10 +190,11 @@ public class ConsoleInteraction implements HistoryInteraction {
             safePrintln("Enter correct key word(s) : ");
         }
         SearchResult result = history.findMessage(keyword);
-        if (result.isEmpty())
-            System.err.println("Cannot find any messages with \"" + keyword + "\"");
-        else
+        if (result.isEmpty()) {
+            safeErrPrintln("Cannot find any messages with \"" + keyword + "\"");
+        } else {
             safePrintln(result);
+        }
     }
 
     private void searchRegex() throws IOException {
@@ -200,10 +204,11 @@ public class ConsoleInteraction implements HistoryInteraction {
             safePrintln("Enter correct regular expression : ");
         }
         SearchResult result = history.findRegEx(regex);
-        if (result.isEmpty())
-            System.err.println("Cannot find any messages match \"" + regex + "\"");
-        else
+        if (result.isEmpty()) {
+            safeErrPrintln("Cannot find any messages match \"" + regex + "\"");
+        } else {
             safePrintln(result);
+        }
     }
 
     private void showPeriod() throws IOException {
@@ -218,23 +223,25 @@ public class ConsoleInteraction implements HistoryInteraction {
             safePrintln("Enter date to (format : \"day.mounth.year\" or \"day.mounth.year hour:minute:second\") : ");
         }
         SimpleDateFormat simpleDateFormat;
-        if (isFullFormat(from))
+        if (isFullFormat(from)) {
             simpleDateFormat = new SimpleDateFormat("dd.M.yyyy hh:mm:ss");
-        else
+        } else {
             simpleDateFormat = new SimpleDateFormat("dd.M.yyyy");
+        }
         try {
             Date dateFrom = simpleDateFormat.parse(from);
             Date dateTo = simpleDateFormat.parse(to);
             SearchResult result = history.findMessage(dateFrom.getTime(), dateTo.getTime());
-            if (result.isEmpty())
-                System.err.println("Cannot find any messages from \""
-                        + simpleDateFormat.format(dateFrom) + "\"" + "to \"" + simpleDateFormat.format(dateTo) + "\"");
-            else
+            if (result.isEmpty()) {
+                safeErrPrintln("Cannot find any messages from \""
+                        + simpleDateFormat.format(dateFrom) + "\"" + "to \""
+                        + simpleDateFormat.format(dateTo) + "\"");
+            } else {
                 safePrintln(result);
+            }
         } catch (ParseException | NumberFormatException e) {
             safePrintln("Wrong data format");
         }
-
     }
 
     private boolean isFullFormat(String string) {
@@ -253,6 +260,12 @@ public class ConsoleInteraction implements HistoryInteraction {
     private void safePrintln(Object o) {
         synchronized (System.out) {
             System.out.println(o);
+        }
+    }
+
+    private void safeErrPrintln(Object o) {
+        synchronized (System.out) {
+            System.err.println(o);
         }
     }
 }
