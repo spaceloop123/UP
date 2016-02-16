@@ -20,16 +20,16 @@ public class SearchResult {
         list.add(message);
     }
 
-    public void log(Level level, String text) {
+    public void log(String text) {
         String className = stringBuilder.toString();
         stringBuilder.append(": ")
                 .append(text);
-        Log.write(stringBuilder.toString(), level);
+        Log.write(stringBuilder.toString(), Level.METHOD);
         stringBuilder.delete(0, stringBuilder.length());
         stringBuilder.append(className)
                 .append(": Found: ")
                 .append(list.size());
-        Log.write(stringBuilder.toString(), level);
+        Log.write(stringBuilder.toString(), Level.METHOD);
     }
 
     public boolean isEmpty() {
