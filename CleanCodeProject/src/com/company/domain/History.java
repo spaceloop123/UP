@@ -26,17 +26,6 @@ public class History {
             map.put(message.getId(), message);
     }
 
-    public void add(String s) {
-        String[] strings = s.split(";");
-        if (map.containsKey(strings[0])) {
-            Log.write(History.class.getSimpleName()
-                    + ": id = \"" + strings[0] + "\" already in map", Level.METHOD);
-        } else {
-            Message message = new Message(strings);
-            map.put(message.getId(), message);
-        }
-    }
-
     public void add(String author, String text) {
         String id = UUID.randomUUID().toString();
         Long timestamp = Date.from(Instant.now()).getTime();

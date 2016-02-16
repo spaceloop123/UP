@@ -21,13 +21,6 @@ public class Message {
         this.message = message;
     }
 
-    public Message(String[] strings) {
-        this.id = strings[0];
-        this.author = strings[1];
-        this.timestamp = Long.parseLong(strings[2]);
-        this.message = strings[3];
-    }
-
     public String getId() {
         return id;
     }

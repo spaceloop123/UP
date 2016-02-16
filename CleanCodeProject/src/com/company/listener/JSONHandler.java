@@ -31,7 +31,7 @@ public class JSONHandler implements Listener {
         } catch (FileNotFoundException e) {
             System.err.println("File " + fileName + " not found");
         } catch (IOException e) {
-            System.err.println("IOExeption while reading " + fileName);
+            System.err.println("IOException while reading " + fileName);
         }
     }
 
