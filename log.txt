@@ -1,0 +1,307 @@
+
+Dell@Dell-3521 MINGW64 ~
+$ cd c:/up
+
+Dell@Dell-3521 MINGW64 /c/up (master)
+$ git log
+commit 8854be47330471e5ba711e7404929681b168bf41
+Author: KarinaMakarevich <karinaneudakh@mail.ru>
+Date:   Tue Feb 23 12:10:08 2016 +0300
+
+    Dropped CleanCodeProject.iml
+
+commit 2f4d4d5252cc08cac128ecdd69109e95eb4b4471
+Author: KarinaMakarevich <karinaneudakh@mail.ru>
+Date:   Tue Feb 16 23:34:11 2016 +0300
+
+    Small changes
+
+commit f560978d7a88beec5b3b9f5679e65200609c2237
+Author: KarinaMakarevich <karinaneudakh@mail.ru>
+Date:   Tue Feb 16 22:17:33 2016 +0300
+
+    Small changes
+
+commit 62d0c02b8b1d5af5a0001c6db13da09b07660ef5
+Author: KarinaMakarevich <karinaneudakh@mail.ru>
+Date:   Tue Feb 16 21:40:28 2016 +0300
+
+    Removed unnecessary methods
+:
+commit 8854be47330471e5ba711e7404929681b168bf41
+Author: KarinaMakarevich <karinaneudakh@mail.ru>
+Date:   Tue Feb 23 12:10:08 2016 +0300
+
+    Dropped CleanCodeProject.iml
+
+commit 2f4d4d5252cc08cac128ecdd69109e95eb4b4471
+Author: KarinaMakarevich <karinaneudakh@mail.ru>
+Date:   Tue Feb 16 23:34:11 2016 +0300
+
+    Small changes
+
+commit f560978d7a88beec5b3b9f5679e65200609c2237
+Author: KarinaMakarevich <karinaneudakh@mail.ru>
+Date:   Tue Feb 16 22:17:33 2016 +0300
+
+    Small changes
+
+commit 62d0c02b8b1d5af5a0001c6db13da09b07660ef5
+Author: KarinaMakarevich <karinaneudakh@mail.ru>
+Date:   Tue Feb 16 21:40:28 2016 +0300
+
+    Removed unnecessary methods
+:
+commit 8854be47330471e5ba711e7404929681b168bf41
+Author: KarinaMakarevich <karinaneudakh@mail.ru>
+Date:   Tue Feb 23 12:10:08 2016 +0300
+
+    Dropped CleanCodeProject.iml
+
+commit 2f4d4d5252cc08cac128ecdd69109e95eb4b4471
+Author: KarinaMakarevich <karinaneudakh@mail.ru>
+Date:   Tue Feb 16 23:34:11 2016 +0300
+
+    Small changes
+
+commit f560978d7a88beec5b3b9f5679e65200609c2237
+Author: KarinaMakarevich <karinaneudakh@mail.ru>
+Date:   Tue Feb 16 22:17:33 2016 +0300
+
+    Small changes
+
+commit 62d0c02b8b1d5af5a0001c6db13da09b07660ef5
+Author: KarinaMakarevich <karinaneudakh@mail.ru>
+Date:   Tue Feb 16 21:40:28 2016 +0300
+
+    Removed unnecessary methods
+ ESCOD
+commit 8854be47330471e5ba711e7404929681b168bf41
+Author: KarinaMakarevich <karinaneudakh@mail.ru>
+Date:   Tue Feb 23 12:10:08 2016 +0300
+
+    Dropped CleanCodeProject.iml
+
+commit 2f4d4d5252cc08cac128ecdd69109e95eb4b4471
+Author: KarinaMakarevich <karinaneudakh@mail.ru>
+Date:   Tue Feb 16 23:34:11 2016 +0300
+
+    Small changes
+
+commit f560978d7a88beec5b3b9f5679e65200609c2237
+Author: KarinaMakarevich <karinaneudakh@mail.ru>
+Date:   Tue Feb 16 22:17:33 2016 +0300
+
+    Small changes
+
+commit 62d0c02b8b1d5af5a0001c6db13da09b07660ef5
+Author: KarinaMakarevich <karinaneudakh@mail.ru>
+Date:   Tue Feb 16 21:40:28 2016 +0300
+
+    Removed unnecessary methods
+
+commit 709514cb3c563d1f4f54d171cc4a557771e12bb9
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Tue Feb 16 20:17:58 2016 +0300
+
+    Added search
+
+commit 474318a919869d1a12ae66ce2f2b466d4d160155
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Tue Feb 16 12:24:57 2016 +0300
+
+    Reformat chat.json
+
+commit 9a241aa39caf344b83e5b9792459c3b5b2a368e0
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Tue Feb 16 12:24:06 2016 +0300
+
+    Dropped exception package
+
+commit db45c340ae0778bb47353cead315648626e73abd
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Mon Feb 15 20:59:44 2016 +0300
+
+    Synchronized system.out.println
+
+commit e13fbef58fa213e2f3c9a33af040acba4bf2a321
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Mon Feb 15 20:44:51 2016 +0300
+
+    Added data search
+
+commit 415ccdfc12d8057e6c9843ad2ef4c1625fc32b93
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Sun Feb 14 12:52:56 2016 +0300
+
+    Fixed interaction
+
+commit 85562d048292cd1580b775bacfb2f8b49fa68da0
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Sat Feb 13 22:31:39 2016 +0300
+
+    Added interaction (not final version)
+
+commit 64d6eee749363a4162441babfd7a2de0eb49efc7
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Sat Feb 13 20:28:12 2016 +0300
+
+    Modified Log.java, History.java
+
+commit ad5248d665e5d3d845e03030727faaa1a02c1ca0
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Fri Feb 12 19:22:53 2016 +0300
+
+    Added Log.java
+
+commit f81ab77c9a23651764bbc3731e5dac700ce35efe
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Fri Feb 12 16:03:33 2016 +0300
+
+    Added Listener interface
+
+commit 62979b1c87dd898fdf95f55897af35bcbf8465de
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Fri Feb 12 15:50:15 2016 +0300
+
+    Added Listener interface
+
+commit 1c7de5e4312417d9e3963255e0b58e813753346e
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Thu Feb 11 20:21:04 2016 +0300
+
+    Rewrote add method
+
+commit 91d453c03d9f8bee4dfaec6c4491301bf5ab5099
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Thu Feb 11 19:00:43 2016 +0300
+
+    Added viewing history
+
+commit 7528def21d14ba59a5fda192c8092f027b7bb7d0
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Wed Feb 10 21:53:43 2016 +0300
+
+    Added history view
+
+commit d91537aa2e1a176c9f05fc9a5ebe405f91283dca
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Wed Feb 10 17:11:38 2016 +0300
+
+    Migrated from list to map in History.java
+
+commit dcceedbfbdcf64df9e704438bf452c02ac021c9d
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Wed Feb 10 11:12:02 2016 +0300
+
+    Add logfile.txt
+
+commit 14597e2b636599ec9bd02357fe288f1d90bb28ef
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Wed Feb 10 09:32:14 2016 +0300
+
+    Add Log.java
+
+commit 4793de08d00af1ada87e962be1293fc9a2d97302
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Wed Feb 10 08:57:58 2016 +0300
+
+    Add getter methods for History.java
+
+commit 3387ef013ed5761814311028a65c38c04c882cb5
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Wed Feb 10 01:28:53 2016 +0300
+
+    Change method writeJSON in Handler.java
+
+commit e2dc7ac541138a4e0570cfe889f25399ba36ef5d
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Wed Feb 10 01:27:16 2016 +0300
+
+    Change method get in History.java
+
+commit 676509762cee10e4d7f7413fe15ef1e317048c0c
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Wed Feb 10 01:24:51 2016 +0300
+
+    Add load/save from/to JSON
+
+commit 8b52de263bcf457ffcdd6152ce68374b48d12f06
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Tue Feb 9 21:02:42 2016 +0300
+
+    Add .iml ignore
+
+commit 3f0368fb07f6373f7f17f8831b7e0ddcbd86c012
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Tue Feb 9 21:00:43 2016 +0300
+
+    Test commit
+
+commit 7a00f3c2eb7124c4dcafc9a9e798ed4d7ae2b547
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Tue Feb 9 20:53:34 2016 +0300
+
+    Modify .gitignore
+
+commit f359b84b51115ad56b0349bd9076b0f1dc8231c8
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Tue Feb 9 20:52:39 2016 +0300
+
+    Add CleanCodeProject
+
+commit 86c9ced1208ef7eafa77280c91aab0cd9216427f
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Tue Feb 9 20:44:54 2016 +0300
+
+    First commit
+ ESCOC
+6c012
+
+
+
+
+
+2b547
+
+
+
+
+
+231c8
+
+
+
+
+
+6427f
+
+
+
+
+ ESCOD
+
+commit 3f0368fb07f6373f7f17f8831b7e0ddcbd86c012
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Tue Feb 9 21:00:43 2016 +0300
+
+    Test commit
+
+commit 7a00f3c2eb7124c4dcafc9a9e798ed4d7ae2b547
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Tue Feb 9 20:53:34 2016 +0300
+
+    Modify .gitignore
+
+commit f359b84b51115ad56b0349bd9076b0f1dc8231c8
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Tue Feb 9 20:52:39 2016 +0300
+
+    Add CleanCodeProject
+
+commit 86c9ced1208ef7eafa77280c91aab0cd9216427f
+Author: Sanya <spaceloop123@outlook.com>
+Date:   Tue Feb 9 20:44:54 2016 +0300
+
+    First commit
+(END)
