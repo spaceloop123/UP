@@ -1,16 +1,15 @@
 package com.company.domain;
 
-import com.company.log.Level;
-import com.company.log.Log;
 import com.company.search.SearchEngine;
 import com.company.search.SearchProvider;
 import com.company.search.SearchResult;
+import org.apache.log4j.Logger;
 
 import java.time.Instant;
 import java.util.*;
 
 public class History {
-    private final static org.apache.log4j.Logger LOGGER = org.apache.log4j.Logger.getLogger(History.class);
+    private final static Logger LOGGER = Logger.getLogger(History.class);
     private Map<String, Message> map;
     private SearchProvider searchProvider;
 
@@ -21,11 +20,10 @@ public class History {
 
     public void add(Message message) {
         if (map.containsKey(message.getId())) {
-            Log.write(History.class.getSimpleName()
-                    + ": id = \"" + message.getId() + "\" already in map", Level.METHOD);
+            LOGGER.info("message with id = \"" + message.getId() + "\" already in map");
         } else {
             map.put(message.getId(), message);
-            Log.write("Added new Message " + message, Level.METHOD);
+            LOGGER.info("added new message " + message);
         }
     }
 
@@ -33,12 +31,11 @@ public class History {
         String id = UUID.randomUUID().toString();
         Long timestamp = Date.from(Instant.now()).getTime();
         if (map.containsKey(id)) {
-            Log.write(History.class.getSimpleName()
-                    + ": id = \"" + id + "\" already in map", Level.METHOD);
+            LOGGER.info("message with id = \"" + id + "\" already in map");
         } else {
             Message message = new Message(id, author, timestamp, text);
             map.put(id, message);
-            Log.write("Added new Message " + message, Level.METHOD);
+            LOGGER.info("added new message " + message);
         }
     }
 
@@ -51,12 +48,10 @@ public class History {
                     .get()
                     .getValue();
         } catch (NoSuchElementException e) {
-            Log.write(History.class.getSimpleName()
-                    + ": Message with id = \"" + id + "\" not found", Level.EXCEPTION);
+            LOGGER.info("message with id = \"" + id + "\" not found");
             return Message.NOT_FOUND_MESSAGE_OBJECT;
         } catch (NumberFormatException e) {
-            Log.write(History.class.getSimpleName()
-                    + ": NumberFormatException for id = \"" + id + "\"", Level.EXCEPTION);
+            LOGGER.info("NumberFormatException for id = \"" + id + "\"");
             return Message.NOT_FOUND_MESSAGE_OBJECT;
         }
     }
@@ -64,17 +59,14 @@ public class History {
     public Message remove(String id) {
         try {
             if (map.containsKey(id)) {
-                Log.write(History.class.getSimpleName() +
-                        ": Message with id = \"" + id + "\" removed", Level.METHOD);
+                LOGGER.info("message with id = \"" + id + "\" removed");
                 return map.remove(id);
             } else {
-                Log.write(History.class.getSimpleName()
-                        + ": Message with id = \"" + id + "\" not found", Level.EXCEPTION);
+                LOGGER.info("message with id = \"" + id + "\" not found");
                 return Message.NOT_FOUND_MESSAGE_OBJECT;
             }
         } catch (NumberFormatException e) {
-            Log.write(History.class.getSimpleName()
-                    + ": NumberFormatException for id = \"" + id + "\"", Level.EXCEPTION);
+            LOGGER.info("NumberFormatException for id = \"" + id + "\"");
             return Message.NOT_FOUND_MESSAGE_OBJECT;
         }
     }

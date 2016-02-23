@@ -1,8 +1,7 @@
 package com.company.search;
 
 import com.company.domain.Message;
-import com.company.log.Level;
-import com.company.log.Log;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +9,7 @@ import java.util.List;
 public class SearchResult {
     private List<Message> list;
     private StringBuilder stringBuilder;
+    private final static Logger LOGGER = Logger.getLogger(SearchResult.class);
 
     public SearchResult(String className) {
         list = new ArrayList<>();
@@ -24,12 +24,11 @@ public class SearchResult {
         String className = stringBuilder.toString();
         stringBuilder.append(": ")
                 .append(text);
-        Log.write(stringBuilder.toString(), Level.METHOD);
         stringBuilder.delete(0, stringBuilder.length());
         stringBuilder.append(className)
                 .append(": Found: ")
                 .append(list.size());
-        Log.write(stringBuilder.toString(), Level.METHOD);
+        LOGGER.info(stringBuilder.toString());
     }
 
     public boolean isEmpty() {

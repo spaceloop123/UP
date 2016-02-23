@@ -16,11 +16,8 @@ import java.util.Date;
 import java.util.Properties;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
-
 public class ConsoleInteraction implements HistoryInteraction {
-    private static final String properties = "src/com/company/resources/config.properties";
-    private final static Logger LOGGER = Logger.getLogger(ConsoleInteraction.class);
+    private static final String properties = "src/main/resources/config.properties";
 
     private Listener listener;
     private History history;
@@ -45,7 +42,7 @@ public class ConsoleInteraction implements HistoryInteraction {
 
             result = property.getProperty("json_file_name");
         } catch (IOException e) {
-            LOGGER.error("Can't open " + properties);
+            LOGGER.info("Can't open " + properties);
         }
         return result;
     }
@@ -71,10 +68,9 @@ public class ConsoleInteraction implements HistoryInteraction {
                     parseCommand(line);
                 }
             } catch (NumberFormatException e) {
-//                safeErrPrintln("Wrong input");
-                LOGGER.error("Wrong input");
+                LOGGER.warn("Wrong input");
             } catch (IOException e) {
-                LOGGER.error(e.getMessage());
+                LOGGER.warn(e.getMessage());
             }
 
         }
@@ -152,7 +148,6 @@ public class ConsoleInteraction implements HistoryInteraction {
             safePrintln("Enter correct text : ");
         }
         history.add(author, text);
-        LOGGER.info("Success");
     }
 
     private void delete() throws IOException {
@@ -162,12 +157,11 @@ public class ConsoleInteraction implements HistoryInteraction {
             safePrintln("Enter correct id : ");
         }
         if (history.get(id).equals(Message.NOT_FOUND_MESSAGE_OBJECT)) {
-            LOGGER.error("Cannot find message with id = " + id);
+            LOGGER.warn("Cannot find message with id = " + id);
         } else if (history.isEmpty()) {
-            LOGGER.error("Cannot delete message by id = \"" + id + "\", chat history is empty");
+            LOGGER.warn("Cannot delete message by id = \"" + id + "\", chat history is empty");
         } else {
             history.remove(id);
-            LOGGER.info("Success");
         }
     }
 
@@ -179,7 +173,7 @@ public class ConsoleInteraction implements HistoryInteraction {
         }
         SearchResult result = history.findAuthor(author);
         if (result.isEmpty()) {
-            LOGGER.error("Cannot find any messages from " + author);
+            LOGGER.warn("Cannot find any messages from " + author);
         } else {
             safePrintln(result);
         }
@@ -193,7 +187,7 @@ public class ConsoleInteraction implements HistoryInteraction {
         }
         SearchResult result = history.findMessage(keyword);
         if (result.isEmpty()) {
-            LOGGER.error("Cannot find any messages with \"" + keyword + "\"");
+            LOGGER.warn("Cannot find any messages with \"" + keyword + "\"");
         } else {
             safePrintln(result);
         }
@@ -207,7 +201,7 @@ public class ConsoleInteraction implements HistoryInteraction {
         }
         SearchResult result = history.findRegEx(regex);
         if (result.isEmpty()) {
-            LOGGER.error("Cannot find any messages match \"" + regex + "\"");
+            LOGGER.warn("Cannot find any messages match \"" + regex + "\"");
         } else {
             safePrintln(result);
         }
@@ -236,14 +230,14 @@ public class ConsoleInteraction implements HistoryInteraction {
             Date dateTo = simpleDateFormat.parse(to);
             SearchResult result = history.findMessage(dateFrom.getTime(), dateTo.getTime());
             if (result.isEmpty()) {
-                LOGGER.error("Cannot find any messages from \""
+                LOGGER.warn("Cannot find any messages from \""
                         + simpleDateFormat.format(dateFrom) + "\"" + "to \""
                         + simpleDateFormat.format(dateTo) + "\"");
             } else {
                 safePrintln(result);
             }
         } catch (ParseException | NumberFormatException e) {
-            LOGGER.error("Wrong data format");
+            LOGGER.warn("Wrong data format");
         }
     }
 
@@ -263,12 +257,6 @@ public class ConsoleInteraction implements HistoryInteraction {
     private void safePrintln(Object o) {
         synchronized (System.out) {
             System.out.println(o);
-        }
-    }
-
-    private void safeErrPrintln(Object o) {
-        synchronized (System.out) {
-            System.err.println(o);
         }
     }
 }
