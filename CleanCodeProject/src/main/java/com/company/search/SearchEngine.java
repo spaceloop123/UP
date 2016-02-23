@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 public class SearchEngine implements SearchProvider {
     @Override
     public SearchResult findAuthor(String author, Map<String, Message> map) {
-        SearchResult searchResult = new SearchResult(SearchEngine.class.getSimpleName());
+        SearchResult searchResult = new SearchResult();
         map.keySet()
                 .stream()
                 .filter(s -> map.get(s).getAuthor().equals(author))
@@ -19,7 +19,7 @@ public class SearchEngine implements SearchProvider {
 
     @Override
     public SearchResult findMessage(String message, Map<String, Message> map) {
-        SearchResult searchResult = new SearchResult(SearchEngine.class.getSimpleName());
+        SearchResult searchResult = new SearchResult();
         map.keySet()
                 .stream()
                 .filter(s -> map.get(s).getMessage().contains(message))
@@ -30,7 +30,7 @@ public class SearchEngine implements SearchProvider {
 
     @Override
     public SearchResult findRegEx(String regex, Map<String, Message> map) {
-        SearchResult searchResult = new SearchResult(SearchEngine.class.getSimpleName());
+        SearchResult searchResult = new SearchResult();
         map.keySet()
                 .stream()
                 .filter(s -> Pattern.compile(regex).matcher(map.get(s).getMessage()).matches())
@@ -41,7 +41,7 @@ public class SearchEngine implements SearchProvider {
 
     @Override
     public SearchResult findMessage(Long timestampFrom, Long timestampTo, Map<String, Message> map) {
-        SearchResult searchResult = new SearchResult(SearchEngine.class.getSimpleName());
+        SearchResult searchResult = new SearchResult();
         map.keySet()
                 .stream()
                 .filter(s -> (map.get(s).getTimestamp() >= timestampFrom && map.get(s).getTimestamp() <= timestampTo))

@@ -11,9 +11,9 @@ public class SearchResult {
     private StringBuilder stringBuilder;
     private final static Logger LOGGER = Logger.getLogger(SearchResult.class);
 
-    public SearchResult(String className) {
+    public SearchResult() {
         list = new ArrayList<>();
-        stringBuilder = new StringBuilder(className);
+        stringBuilder = new StringBuilder();
     }
 
     public void add(Message message) {
@@ -21,11 +21,8 @@ public class SearchResult {
     }
 
     public void log(String text) {
-        String className = stringBuilder.toString();
-        stringBuilder.append(": ")
-                .append(text);
         stringBuilder.delete(0, stringBuilder.length());
-        stringBuilder.append(className)
+        stringBuilder.append(text)
                 .append(": Found: ")
                 .append(list.size());
         LOGGER.info(stringBuilder.toString());
