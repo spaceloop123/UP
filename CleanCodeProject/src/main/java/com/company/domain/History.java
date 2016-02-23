@@ -10,6 +10,7 @@ import java.time.Instant;
 import java.util.*;
 
 public class History {
+    private final static org.apache.log4j.Logger LOGGER = org.apache.log4j.Logger.getLogger(History.class);
     private Map<String, Message> map;
     private SearchProvider searchProvider;
 
