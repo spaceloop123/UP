@@ -22,7 +22,7 @@ public class ConsoleInteraction implements HistoryInteraction {
     private Listener listener;
     private History history;
     private String fileName;
-    private BufferedReader bufferedReader;
+    protected BufferedReader bufferedReader;
 
     public ConsoleInteraction() {
         fileName = this.getFileName();
@@ -121,12 +121,12 @@ public class ConsoleInteraction implements HistoryInteraction {
         }
     }
 
-    private boolean isEmpty(String string) {
-        return (Pattern.compile(Constants.EMPTY_STRING).matcher(string).matches());
-    }
-
     private void show() {
         history.show();
+    }
+
+    private boolean isEmpty(String string) {
+        return (Pattern.compile(Constants.EMPTY_STRING).matcher(string).matches());
     }
 
     private String getCorrectString(String text) throws IOException {
