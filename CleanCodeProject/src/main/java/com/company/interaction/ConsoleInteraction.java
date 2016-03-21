@@ -70,7 +70,7 @@ public class ConsoleInteraction implements HistoryInteraction {
             } catch (NumberFormatException e) {
                 LOGGER.info("Wrong input");
             } catch (IOException e) {
-                LOGGER.info(e.getMessage());
+                LOGGER.info("IOException");
             }
 
         }
@@ -146,10 +146,8 @@ public class ConsoleInteraction implements HistoryInteraction {
 
     private void delete() throws IOException {
         String id = getCorrectString("id");
-        if (history.get(id).equals(Constants.NOT_FOUND_MESSAGE)) {
+        if (history.remove(id).equals(Constants.NOT_FOUND_MESSAGE)) {
             LOGGER.info("Cannot find message with id = " + id);
-        } else {
-            history.remove(id);
         }
     }
 

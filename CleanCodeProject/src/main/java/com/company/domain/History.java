@@ -23,36 +23,16 @@ public class History {
     }
 
     public void add(Message message) {
-        if (map.containsKey(message.getId())) {
-            LOGGER.warn("message with id = \"" + message.getId() + "\" already in map");
-        } else {
-            map.put(message.getId(), message);
-            LOGGER.warn("added new message " + message);
-        }
+        map.put(message.getId(), message);
+        LOGGER.warn("added new message " + message);
     }
 
     public void add(String author, String text) {
         String id = UUID.randomUUID().toString();
         Long timestamp = Date.from(Instant.now()).getTime();
-        if (map.containsKey(id)) {
-            LOGGER.warn("message with id = \"" + id + "\" already in map");
-        } else {
-            Message message = new Message(id, author, timestamp, text);
-            map.put(id, message);
-            LOGGER.warn("added new message " + message);
-        }
-    }
-
-    public Message get(String id) {
-        try {
-            if (!map.containsKey(id)) {
-                throw new NoSuchElementException();
-            }
-            return map.get(id);
-        } catch (NoSuchElementException e) {
-            LOGGER.warn("message with id = \"" + id + "\" not found");
-            return Constants.NOT_FOUND_MESSAGE;
-        }
+        Message message = new Message(id, author, timestamp, text);
+        map.put(id, message);
+        LOGGER.warn("added new message " + message);
     }
 
     public Message remove(String id) {
