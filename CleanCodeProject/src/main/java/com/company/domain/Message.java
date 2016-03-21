@@ -1,18 +1,10 @@
 package com.company.domain;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.util.Date;
-
 public class Message {
     private String id;
     private String author;
     private Long timestamp;
     private String message;
-
-    public static transient final DateFormat FORMATTER = new SimpleDateFormat("[dd.MM.yyyy HH:mm:ss]");
-    public static transient final Message NOT_FOUND_MESSAGE_OBJECT = new Message("", "", 0l, "");
 
     public Message(String id, String author, Long timestamp, String message) {
         this.id = id;
@@ -68,11 +60,5 @@ public class Message {
         result = 31 * result + (timestamp != null ? timestamp.hashCode() : 0);
         result = 31 * result + (message != null ? message.hashCode() : 0);
         return result;
-    }
-
-    public String getFormattedMessage() {
-        Instant instant = Instant.ofEpochMilli(timestamp);
-        Date dateFromInstant = Date.from(instant);
-        return FORMATTER.format(dateFromInstant) + " " + author + ": " + message;
     }
 }

@@ -6,6 +6,8 @@ import org.apache.log4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.company.utils.Utils.getFormattedMessage;
+
 public class SearchResult {
     private List<Message> list;
     private StringBuilder stringBuilder;
@@ -16,8 +18,9 @@ public class SearchResult {
         stringBuilder = new StringBuilder();
     }
 
-    public void add(Message message) {
-        list.add(message);
+    public SearchResult(List<Message> list) {
+        this.list = list;
+        stringBuilder = new StringBuilder();
     }
 
     public void log(String text) {
@@ -25,7 +28,7 @@ public class SearchResult {
         stringBuilder.append(text)
                 .append(": Found: ")
                 .append(list.size());
-        LOGGER.info(stringBuilder.toString());
+        LOGGER.warn(stringBuilder.toString());
     }
 
     public boolean isEmpty() {
@@ -35,7 +38,7 @@ public class SearchResult {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        list.forEach(message -> stringBuilder.append(message.getFormattedMessage()).append("\n"));
+        list.forEach(message -> stringBuilder.append(getFormattedMessage(message)).append("\n"));
         return stringBuilder.toString();
     }
 }

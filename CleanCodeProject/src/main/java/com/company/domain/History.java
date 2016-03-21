@@ -3,10 +3,14 @@ package com.company.domain;
 import com.company.search.SearchEngine;
 import com.company.search.SearchProvider;
 import com.company.search.SearchResult;
+import com.company.utils.Constants;
 import org.apache.log4j.Logger;
 
 import java.time.Instant;
 import java.util.*;
+
+import static com.company.utils.Utils.getFormattedMessage;
+import static com.company.utils.Utils.safePrintln;
 
 public class History {
     private final static Logger LOGGER = Logger.getLogger(History.class);
@@ -20,10 +24,10 @@ public class History {
 
     public void add(Message message) {
         if (map.containsKey(message.getId())) {
-            LOGGER.info("message with id = \"" + message.getId() + "\" already in map");
+            LOGGER.warn("message with id = \"" + message.getId() + "\" already in map");
         } else {
             map.put(message.getId(), message);
-            LOGGER.info("added new message " + message);
+            LOGGER.warn("added new message " + message);
         }
     }
 
@@ -31,50 +35,43 @@ public class History {
         String id = UUID.randomUUID().toString();
         Long timestamp = Date.from(Instant.now()).getTime();
         if (map.containsKey(id)) {
-            LOGGER.info("message with id = \"" + id + "\" already in map");
+            LOGGER.warn("message with id = \"" + id + "\" already in map");
         } else {
             Message message = new Message(id, author, timestamp, text);
             map.put(id, message);
-            LOGGER.info("added new message " + message);
+            LOGGER.warn("added new message " + message);
         }
     }
 
     public Message get(String id) {
         try {
-            return map.entrySet()
-                    .stream()
-                    .filter(entry -> entry.getKey().equals(id))
-                    .findFirst()
-                    .get()
-                    .getValue();
+            if (!map.containsKey(id)) {
+                throw new NoSuchElementException();
+            }
+            return map.get(id);
         } catch (NoSuchElementException e) {
-            LOGGER.info("message with id = \"" + id + "\" not found");
-            return Message.NOT_FOUND_MESSAGE_OBJECT;
-        } catch (NumberFormatException e) {
-            LOGGER.info("NumberFormatException for id = \"" + id + "\"");
-            return Message.NOT_FOUND_MESSAGE_OBJECT;
+            LOGGER.warn("message with id = \"" + id + "\" not found");
+            return Constants.NOT_FOUND_MESSAGE;
         }
     }
 
     public Message remove(String id) {
         try {
-            if (map.containsKey(id)) {
-                LOGGER.info("message with id = \"" + id + "\" removed");
-                return map.remove(id);
-            } else {
-                LOGGER.info("message with id = \"" + id + "\" not found");
-                return Message.NOT_FOUND_MESSAGE_OBJECT;
+            if (!map.containsKey(id)) {
+                throw new NoSuchElementException();
             }
-        } catch (NumberFormatException e) {
-            LOGGER.info("NumberFormatException for id = \"" + id + "\"");
-            return Message.NOT_FOUND_MESSAGE_OBJECT;
+            LOGGER.warn("message with id = \"" + id + "\" removed");
+            return map.remove(id);
+        } catch (NoSuchElementException e) {
+            LOGGER.warn("message with id = \"" + id + "\" not found");
+            return Constants.NOT_FOUND_MESSAGE;
         }
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        map.keySet().forEach(s -> sb.append(map.get(s).toString()).append("\n"));
+        map.keySet().forEach(s -> sb.append(getFormattedMessage(map.get(s))).append("\n"));
         return sb.toString();
     }
 
@@ -90,11 +87,7 @@ public class History {
 
     public void show() {
         List<Message> list = this.sort();
-        list.forEach(message -> System.out.println(message.getFormattedMessage()));
-    }
-
-    public boolean isEmpty() {
-        return map.isEmpty();
+        list.forEach(message -> safePrintln(getFormattedMessage(message)));
     }
 
     public SearchResult findAuthor(String author) {
