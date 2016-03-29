@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chat</title>
+	<!-- <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link href="css/font-awesome.css" rel="stylesheet"/>
+	<link href="css/menu.css" rel="stylesheet"/>
+	<link href="css/content.css" rel="stylesheet"/>
+	<link href="css/responsive.css" rel="stylesheet"/>
+	
+</head>
+<body>
+
+	<div id="layout">
+
+		<a href="#menu" id="menuLink" class="menu-link"><span></span></a>
+
+		<div id="menu">
+			<div class="pure-menu">
+				<div class="pure-menu-heading">
+					<div class="profile-image"><img src="images/user.png" alt=""></div>
+					<div id="profile-name">My name</div>
+					<div id="circle">
+						<div id="edit-profile-name"><i class="fa fa-pencil fa-lg"></i></div>	
+					</div>
+				</div>
+
+				<div class="title">
+					<p>Participants</p>
+				</div>
+				
+				<div class="users">
+					<a class="pure-menu-item" href="#">
+						<div class="pure-menu-link"><span class="fa fa-user fa-fw"></span>&nbsp; Username 1</div>
+					</a>
+					<a class="pure-menu-item" href="#">
+						<div class="pure-menu-link"><span class="fa fa-user fa-fw"></span>&nbsp; Username 2</div>
+					</a>
+					<a class="pure-menu-item" href="#">
+						<div class="pure-menu-link"><span class="fa fa-user fa-fw"></span>&nbsp; Username 3</div>
+					</a>
+					<a class="pure-menu-item" href="#">
+						<div class="pure-menu-link"><span class="fa fa-user fa-fw"></span>&nbsp; Username 4</div>
+					</a>
+				</div>
+
+			</div>
+		</div>
+
+		
+		<div id="page">
+			<div id="content_container">
+				<div id="content">
+					<div class="header"></div>
+					<div class="body">
+						<div class="msg-box">
+							<div class="msg-body">
+								<ul class="chat-list">
+									<div class="msg" id="my-msg">
+										<li>
+											<div class="author">
+												My name 
+											</div>
+											<span class="double-dot">:</span>
+											<div id="edit-message-button"><i class="fa fa-pencil"></i></div>
+											<div class="text">
+												Lorem
+											</div>
+											<div class="date">
+												5.47pm
+											</div>
+										</li>
+									</div>
+									
+								</ul>
+							</div>
+
+
+							<div class="msg-footer">
+								<div class="textarea-contain">
+									<div class="msg-input">
+										<textarea placeholder="Enter message..." id="msg-input-area"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="js/left-side-menu.js"></script>
+		<script src="js/index.js"></script>
+
+	</body>
+	</html>

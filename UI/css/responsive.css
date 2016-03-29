@@ -1,0 +1,53 @@
+@media (min-width: 48em) {
+
+    #layout {
+        padding-left: 256px; /* left col width "#menu" */
+        left: 0;
+    }
+    #menu {
+        left: 256px;
+    }
+
+    .menu-link {
+        position: fixed;
+        left: 256px;
+        display: none;
+    }
+
+    #layout.active .menu-link {
+        left: 256px;
+    }
+
+    .header {
+        height: 64px;
+        width: 100%;
+        position: fixed;
+    }
+
+}
+
+@media (max-width: 48em) {
+
+    #layout.active {
+        position: relative;
+        left: 256px;
+    }
+
+    .header {
+        height: 64px;
+    }
+
+    .msg-box {
+        padding-right: 0;
+    }
+
+    .msg-footer {
+        position: fixed;
+        width: 100%;
+        bottom: 0px;
+        height: 108px;
+        box-sizing: border-box;
+        padding-right: 0;
+    } 
+
+}
