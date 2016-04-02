@@ -29,14 +29,16 @@ function sendMessage(value) {
 	document.body.scrollTop = document.body.scrollHeight - document.body.clientHeight;
 }
 
-function createMessage(text) {
+/*
+Create message
+*/
+function createMessage(value) {
 	var message = createMessageContainer();
 	var author = createAuthor();
 	var doubleDot = createDoubleDot();
 	var editButton = createEditButton();
-	var text = createText();
+	var text = createText(value);
 	var date = createDate();
-
 
 	var li = document.createElement("li");
 	li.appendChild(author);
@@ -71,10 +73,10 @@ function createDoubleDot() {
 	return span;
 }
 
-function createText() {
+function createText(value) {
 	var div = document.createElement("div");
 	div.className = "text";
-	div.textContent = msgInputArea.value;
+	div.textContent = value;
 	return div;
 }
 
@@ -94,7 +96,7 @@ function formatDate(date) {
 	var amPM = (hour > 11) ? "pm" : "am";
 	if(hour > 12) {
 		hour -= 12;
-	} else if(hour == 0) {
+	} else if(hour === 0) {
 		hour = "12";
 	}
 	if(minute < 10) {

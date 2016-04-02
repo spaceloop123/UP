@@ -4,32 +4,33 @@
     menu     = document.getElementById('menu'),
     menuLink = document.getElementById('menuLink');
 
-    function toggleClass(element, className) {
-        var classes = element.className.split(/\s+/),
-        length = classes.length,
-        i = 0;
-
-        for(; i < length; i++) {
-          if (classes[i] === className) {
-            classes.splice(i, 1);
-            break;
-        }
-    }
-        // The className is not found
-        if (length === classes.length) {
-            classes.push(className);
-        }
-
-        element.className = classes.join(' ');
-    }
-
     menuLink.onclick = function (e) {
-        var active = 'active';
-
         e.preventDefault();
-        toggleClass(layout, active);
-        toggleClass(menu, active);
-        toggleClass(menuLink, active);
+        toggleClass(layout, "active");
+        toggleClass(menu, "active");
+        toggleClass(menuLink, "active");
     };
+
+
+    var editButton = document.getElementById("btn-group");
+    editButton.onclick = function() {
+        toggleClass(document.getElementById("btn-container"), "active");
+        toggleClass(document.getElementById("plus-icon"), "rotate")
+    }
+
+    var fab = document.getElementById("fab");
+    var fabSha = document.getElementById("fab-sha");
+    var close = document.getElementById("close");
+    fab.onclick = function() {
+      addClass(fab, "expand");
+      addClass(fabSha, "active");
+      addClass(close, "active");
+  }
+
+  close.onclick = function() {
+      removeClass(close, "active");
+      removeClass(fab, "expand");
+      removeClass(fabSha, "active");
+  }
 
 }(this, this.document));

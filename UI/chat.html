@@ -3,35 +3,44 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Chat</title>
-	<!-- <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'> -->
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link href="css/font-awesome.css" rel="stylesheet"/>
 	<link href="css/menu.css" rel="stylesheet"/>
 	<link href="css/content.css" rel="stylesheet"/>
 	<link href="css/responsive.css" rel="stylesheet"/>
-	
 </head>
 <body>
 
 	<div id="layout">
-
 		<a href="#menu" id="menuLink" class="menu-link"><span></span></a>
 
 		<div id="menu">
 			<div class="pure-menu">
-				<div class="pure-menu-heading">
-					<div class="profile-image"><img src="images/user.png" alt=""></div>
-					<div id="profile-name">My name</div>
-					<div id="circle">
-						<div id="edit-profile-name"><i class="fa fa-pencil fa-lg"></i></div>	
+
+				<div class="card">
+					<div class="pure-menu-heading">
+						<div class="profile-image"><img src="images/user.png" alt=""></div>
+						<div id="profile-name">My name</div>
+
+						<div class="btn-container" id="btn-container">
+							<div class="btn btn-primary" id="btn-group"><i class="fa fa-plus fa-lg" id="plus-icon"></i></div>
+							<div class="btn btn-secondary" id="edit-btn"><i class="fa fa-pencil fa-lg" id="pencil-icon"></i></div>
+							<div class="btn btn-tertiary" id="camera-btn"><i class="fa fa-camera fa-lg" id="camera-icon"></i></div>
+						</div>
+
 					</div>
+
+					<div class="title">
+						<p>Participants</p>
+					</div>
+
+					<div class="fab" id="fab"></div>
+					<div class="fab-sha" id="fab-sha"></div>
+					<div class="close" id="close"></div>
 				</div>
 
-				<div class="title">
-					<p>Participants</p>
-				</div>
-				
 				<div class="users">
 					<a class="pure-menu-item" href="#">
 						<div class="pure-menu-link"><span class="fa fa-user fa-fw"></span>&nbsp; Username 1</div>
@@ -47,10 +56,10 @@
 					</a>
 				</div>
 
+
 			</div>
 		</div>
 
-		
 		<div id="page">
 			<div id="content_container">
 				<div id="content">
@@ -74,15 +83,21 @@
 											</div>
 										</li>
 									</div>
-									
+
 								</ul>
 							</div>
-
-
+							<!-- <div class="card">
+								<div class="main"></div>
+								<div class="fab" id="fab"></div>
+								<div class="fab-sha" id="fab-sha"></div>
+								<div class="close" id="close"></div>
+							</div> -->
 							<div class="msg-footer">
 								<div class="textarea-contain">
 									<div class="msg-input">
-										<textarea placeholder="Enter message..." id="msg-input-area"></textarea>
+										<textarea id="msg-input-area"></textarea>
+										<label for="textarea" class="control-label">Enter message...</label>
+										<i class="bar"></i>
 									</div>
 								</div>
 							</div>
@@ -91,7 +106,8 @@
 				</div>
 			</div>
 		</div>
-		
+
+		<script src="js/class-work.js"></script>	
 		<script src="js/left-side-menu.js"></script>
 		<script src="js/index.js"></script>
 

@@ -1,5 +1,5 @@
 body {
-    
+
     background: #f9f9f9;
 }
 
@@ -13,21 +13,21 @@ body {
 }
 
 .header {
- color: #333;
- text-align: center;
- color: rgb(255, 255, 255);
- fill: rgb(255, 255, 255);
- top: 0px;
- bottom: 0px;
- padding: 0;
- background-color: rgb(79, 125, 201);
- width: 100%;
- height: 128px;
- position: fixed;
- -moz-box-sizing: border-box;
- box-sizing: border-box;
- box-shadow: rgba(0, 0, 0, 0.1180392) 0px 2px 4px, rgba(0, 0, 0, 0.1180392) 0px 0px 3px;
- z-index: 10;
+   color: #333;
+   text-align: center;
+   color: rgb(255, 255, 255);
+   fill: rgb(255, 255, 255);
+   top: 0px;
+   bottom: 0px;
+   padding: 0;
+   background-color: rgb(79, 125, 201);
+   width: 100%;
+   height: 128px;
+   position: fixed;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+   box-shadow: rgba(0, 0, 0, 0.1180392) 0px 2px 4px, rgba(0, 0, 0, 0.1180392) 0px 0px 3px;
+   z-index: 10;
 }
 
 /* 
@@ -135,7 +135,7 @@ html,body{
     width: 100%;
     bottom: 0px;
     height: 108px;
-    background: #dadfe1;
+    background: #f9f9f9;
     padding-right: 256px;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -144,19 +144,32 @@ html,body{
 /* 
 IE 6 
 */
-* html .msg-footer {
-   position:absolute;
-   top:expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+'px');
-}
+/* * html .msg-footer {
+   position: absolute;
+   top:expression((0-(footer.offsetHeight)+
+    (document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)
+    +(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))
+   +'px');
+   } */
 
-.textarea-contain {
+   .textarea-contain {
     width: 100%;
     height: 64px;
-
     padding: 22px;
-
     position: relative;
     box-sizing: border-box;
+}
+
+textarea,
+textarea::after,
+textarea::before{
+  box-sizing: border-box;
+}
+
+#msg-edit-area {
+    width: 100%;
+    height: 100%;
+    resize: none;
 }
 
 .msg-input {
@@ -164,23 +177,87 @@ IE 6
     font-family: Roboto,sans-serif;
     font-size: 1.0rem;
     line-height: 1rem;
+    height: 64px;
+    max-height: 64px;
+    padding: 7px;
+
 }
 
 #msg-input-area {
-    width: 100%!important;
-    height: 64px!important;
-    float: left;
-    margin: 0;
+    display: block;
+    background: none;
+    padding: 0.125rem 0.125rem 0.0625rem;
+    font-size: 1.2rem;
+    border-width: 0;
+    border-color: transparent;
+    line-height: 1.1;
+    width: 100%;
+    color: transparent;
+    -webkit-transition: all 0.28s ease;
+    transition: all 0.28s ease;
+    box-shadow: none;
     resize: none;
-    box-sizing: border-box;
-    padding: 7px;
-    line-height: 12em;
-    font: inherit;
-    letter-spacing: inherit;
+    height: 100%;
+    font-family: 'Roboto';
+}
+
+#msg-input-area:focus,
+#msg-input-area:valid {
     color: #333;
-    vertical-align: top;
-    -webkit-background-clip: padding-box;
-    background: #fff;
+}
+
+.msg-input .control-label {
+  position: absolute;
+  pointer-events: none;
+  padding-left: 0.125rem;
+  z-index: 1;
+  color: #b3b3b3;
+  font-weight: normal;
+  -webkit-transition: all 0.28s ease;
+  transition: all 0.28s ease;
+  font-size: 1.0rem;
+  color: gray;
+  top: 80%;
+}
+
+.msg-input .bar {
+  position: relative;
+  border-bottom: 0.0625rem solid #999;
+  display: block;
+}
+
+.msg-input .bar::before {
+  content: '';
+  height: 0.125rem;
+  width: 0;
+  left: 50%;
+  bottom: -0.0625rem;
+  position: absolute;
+  background: #337ab7;
+  -webkit-transition: left 0.28s ease, width 0.28s ease;
+  transition: left 0.28s ease, width 0.28s ease;
+  z-index: 2;
+}
+
+.msg-input textarea:focus ~ .control-label{
+   font-size: 0.8rem;
+   color: gray;
+   top: 15%;
+   color: #337ab7;
+}
+
+.msg-input textarea:focus {
+  outline: none;
+}
+
+
+.msg-input textarea:focus ~ .bar::before {
+  width: 100%;
+  left: 0;
+}
+
+#edit-message-button {
+    float: right;
 }
 
 .chat-list {
@@ -194,22 +271,25 @@ IE 6
     min-height: 32px;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    box-shadow: rgba(0, 0, 0, 0.1980392) 0px 2px 4px, rgba(0, 0, 0, 0.1980392) 0px 0px 3px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
     color: #3c3a41;
     margin-bottom: 7px;
+}
+
+.msg:hover {
+  box-shadow: 0 1px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 1px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
 }
 
 li {
     display: list-item;
     text-align: left;
-    font-size: 16px;
-    line-height: 20px;
     padding: 6px 20px;
     word-wrap: break-word;
     list-style-position: unset;
     overflow: hidden;
     font-family: Roboto;
     font-size: 14px;
+    line-height: 20px;   
 }
 
 .author {
@@ -290,7 +370,8 @@ Alert
 Text area 
 */
 
-input[type=text], textarea {
+/* input[type=text], #msg-input-area, */
+input[type=text], #msg-edit-area {
   -webkit-transition: all 0.30s ease-in-out;
   -moz-transition: all 0.30s ease-in-out;
   -ms-transition: all 0.30s ease-in-out;
@@ -301,14 +382,25 @@ input[type=text], textarea {
   border: 1px solid #DDDDDD;
 }
 
-input[type=text]:focus, textarea:focus {
+/* input[type=text]:focus, #msg-input-area:focus, */
+input[type=text]:focus, #msg-edit-area:focus {
   box-shadow: 0 0 5px rgba(183, 187, 189, 1);
   padding: 3px 0px 3px 3px;
   margin: 5px 1px 3px 0px;
   border: 1px solid rgba(183, 187, 189, 1);
 }
 
+input[type=text], #msg-edit-area {
+  margin: 0;
+}
 
+input[type=text]:focus, #msg-edit-area:focus {
+  margin: 0;
+}
+
+/*
+Scroll
+*/
 ::-webkit-scrollbar {
     width: 12px;
 }
