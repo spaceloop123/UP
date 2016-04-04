@@ -24,6 +24,16 @@
         position: fixed;
     }
 
+    .textarea-contain {
+        width: 90%;
+    }
+
+    .btn-contain {
+        float: left;
+        width: 5%;
+        margin-left: 15px;
+        margin-top: 25px;
+    }
 }
 
 @media (max-width: 48em) {
@@ -42,12 +52,17 @@
     }
 
     .msg-footer {
-        position: fixed;
-        width: 100%;
-        bottom: 0px;
-        height: 108px;
-        box-sizing: border-box;
         padding-right: 0;
     } 
 
+    .textarea-contain {
+        width: 80%;
+    }
+
+    .btn-contain {
+        margin-right: 8%;
+        margin-top: 25px;
+        top: 20%;
+        padding-right: 17px;
+    }
 }

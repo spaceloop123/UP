@@ -3,13 +3,15 @@ Global variables
 */
 var user = document.getElementById("profile-name");
 var msgInputArea = document.getElementById("msg-input-area");
-
+var msgInputBtn = document.getElementById("msg-input-btn");
 /*
 Send created message by pressing ctrl+enter
 */
 msgInputArea.addEventListener('keydown', function(e) {
 	if(e.keyCode == 13 && e.ctrlKey) {
-		
+		if(msgInputArea.value === "") 
+			return false;
+
 		sendMessage(this.value);
 		this.value = "";
 
@@ -17,6 +19,22 @@ msgInputArea.addEventListener('keydown', function(e) {
 	}
 });
 
+msgInputBtn.addEventListener('click', function() {
+	
+	if(msgInputArea.value === "") 
+		return true;
+
+	addClass(this, "active");
+	sendMessage(msgInputArea.value);
+	msgInputArea.value = "";
+	removeClass(this, "active");
+
+	return false;
+}, true);
+
+/*
+Create message
+*/
 function sendMessage(value) {
 	if(!value)
 		return;
@@ -36,14 +54,14 @@ function createMessage(value) {
 	var message = createMessageContainer();
 	var author = createAuthor();
 	var doubleDot = createDoubleDot();
-	var editButton = createEditButton();
+	var editbtn = createEditbtn();
 	var text = createText(value);
 	var date = createDate();
 
 	var li = document.createElement("li");
 	li.appendChild(author);
 	li.appendChild(doubleDot);
-	li.appendChild(editButton);
+	li.appendChild(editbtn);
 	li.appendChild(text);
 	li.appendChild(date);
 	
@@ -105,9 +123,9 @@ function formatDate(date) {
 	return hour + ":" + minute + amPM;
 }
 
-function createEditButton() {
+function createEditbtn() {
 	var div = document.createElement("div");
-	div.id = "edit-message-button";
+	div.id = "edit-message-btn";
 	
 	var i = document.createElement("i");
 	i.className = "fa fa-pencil";

@@ -1,33 +1,33 @@
 body {
 
-    background: #f9f9f9;
+  background: #f9f9f9;
 }
 
 .pure-img-responsive {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 .content {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .header {
-   color: #333;
-   text-align: center;
-   color: rgb(255, 255, 255);
-   fill: rgb(255, 255, 255);
-   top: 0px;
-   bottom: 0px;
-   padding: 0;
-   background-color: rgb(79, 125, 201);
-   width: 100%;
-   height: 128px;
-   position: fixed;
-   -moz-box-sizing: border-box;
-   box-sizing: border-box;
-   box-shadow: rgba(0, 0, 0, 0.1180392) 0px 2px 4px, rgba(0, 0, 0, 0.1180392) 0px 0px 3px;
-   z-index: 10;
+ color: #333;
+ text-align: center;
+ color: rgb(255, 255, 255);
+ fill: rgb(255, 255, 255);
+ top: 0px;
+ bottom: 0px;
+ padding: 0;
+ background-color: rgb(79, 125, 201);
+ width: 100%;
+ height: 128px;
+ position: fixed;
+ -moz-box-sizing: border-box;
+ box-sizing: border-box;
+ box-shadow: rgba(0, 0, 0, 0.1180392) 0px 2px 4px, rgba(0, 0, 0, 0.1180392) 0px 0px 3px;
+ z-index: 10;
 }
 
 /* 
@@ -35,129 +35,156 @@ Message box
 */
 
 * { 
-    margin: 0; 
-    padding: 0; 
+  margin: 0; 
+  padding: 0; 
 }
 
 #page {
-    display:table;
-    overflow:hidden;
-    margin:0px auto;
+  display:table;
+  overflow:hidden;
+  margin:0px auto;
 }
 
 /*
 ie7
 */
 *:first-child+html #page {
-    position:relative;
+  position:relative;
 }
 
 /*
 ie6
 */   
 * html #page{
-    position:relative;
+  position:relative;
 }
 
 #content_container{
-    display:table-cell;
-    vertical-align: middle;
-    box-sizing: border-box;
+  display:table-cell;
+  vertical-align: middle;
+  box-sizing: border-box;
 }
 
 /*
 ie7
 */
 *:first-child+html #content_container{
-    position:absolute;
-    top:50%;
+  position:absolute;
+  top:50%;
 }
 
 /*
 ie6
 */
 * html #content_container{
-    position:absolute;
-    top:50%;
+  position:absolute;
+  top:50%;
 }
 
 /*
 ie7
 */
 *:first-child+html #content{
-    position:relative;
-    top:-50%;
+  position:relative;
+  top:-50%;
 }
 
 /*
 ie6
 */
 * html #content{
-    position:relative;
-    top:-50%;
+  position:relative;
+  top:-50%;
 }
 
 html,body{
-    height:100%;
-    max-width: 100%;
-    overflow-x: hidden;
+  height:100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 #page{
-    height:100%;
-    width: 100%;
-    background: #f9f9f9;
+  height:100%;
+  width: 100%;
+  background: #f9f9f9;
 }
 
 #page .body  {
-    width: 100%;
-    margin-top: 64px;
-    margin-bottom: 111px; /*footer height + chat-list margin-bottom*/
-    overflow-x: hidden;
-    overflow-y: auto;
+  width: 100%;
+  margin-top: 64px;
+  margin-bottom: 111px; /*footer height + chat-list margin-bottom*/
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .msg-box {
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    width: 100vw;
-    padding-right: 256px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100vw;
+  padding-right: 256px;
 }
 
 .msg-body {
-    background: #fff;
-    width: 90%;
-    margin: 0 auto;
+  background: #fff;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .msg-footer {
-    position:fixed;
-    width: 100%;
-    bottom: 0px;
-    height: 108px;
-    background: #f9f9f9;
-    padding-right: 256px;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+  position:fixed;
+  width: 100%;
+  bottom: 0px;
+  height: 108px;
+  background: #f9f9f9;
+  padding-right: 256px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }   
 
-/* 
-IE 6 
-*/
-/* * html .msg-footer {
-   position: absolute;
-   top:expression((0-(footer.offsetHeight)+
-    (document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)
-    +(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))
-   +'px');
-   } */
+.textarea-contain {
+  width: 95%;
+  height: 64px;
+  padding: 22px;
+  position: relative;
+  box-sizing: border-box;
+  float: left;
+}
 
-   .textarea-contain {
-    width: 100%;
-    height: 64px;
-    padding: 22px;
-    position: relative;
-    box-sizing: border-box;
+.btn-contain {
+  float: right;
+  color: rgb(79, 125, 201);
+  margin-right: 2%;
+  margin-top: -20px;
+  position: relative;
+  top: 20%;
+}
+
+.btn-send {
+  padding-right: 1.5em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#msg-input-btn{
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  color: rgb(79, 125, 201);
+  cursor: pointer;
+}
+
+#msg-input-btn:hover {
+  outline: none;
+}
+
+#paper-plane {
+  transition: transform 0.1s ease-in;
+}
+
+#paper-plane:hover {
+  transform: rotate(45deg);
 }
 
 textarea,
@@ -167,43 +194,42 @@ textarea::before{
 }
 
 #msg-edit-area {
-    width: 100%;
-    height: 100%;
-    resize: none;
+  width: 100%;
+  height: 100%;
+  resize: none;
 }
 
 .msg-input {
-    box-sizing: border-box;
-    font-family: Roboto,sans-serif;
-    font-size: 1.0rem;
-    line-height: 1rem;
-    height: 64px;
-    max-height: 64px;
-    padding: 7px;
-
+  box-sizing: border-box;
+  font-family: Roboto,sans-serif;
+  font-size: 1.0rem;
+  line-height: 1rem;
+  height: 64px;
+  max-height: 64px;
+  padding: 7px;
 }
 
 #msg-input-area {
-    display: block;
-    background: none;
-    padding: 0.125rem 0.125rem 0.0625rem;
-    font-size: 1.2rem;
-    border-width: 0;
-    border-color: transparent;
-    line-height: 1.1;
-    width: 100%;
-    color: transparent;
-    -webkit-transition: all 0.28s ease;
-    transition: all 0.28s ease;
-    box-shadow: none;
-    resize: none;
-    height: 100%;
-    font-family: 'Roboto';
+  display: block;
+  background: none;
+  padding: 0.125rem 0.125rem 0.0625rem;
+  font-size: 1.2rem;
+  border-width: 0;
+  border-color: transparent;
+  line-height: 1.1;
+  width: 100%;
+  color: transparent;
+  -webkit-transition: all 0.28s ease;
+  transition: all 0.28s ease;
+  box-shadow: none;
+  resize: none;
+  height: 100%;
+  font-family: 'Roboto';
 }
 
 #msg-input-area:focus,
 #msg-input-area:valid {
-    color: #333;
+  color: #333;
 }
 
 .msg-input .control-label {
@@ -240,10 +266,10 @@ textarea::before{
 }
 
 .msg-input textarea:focus ~ .control-label{
-   font-size: 0.8rem;
-   color: gray;
-   top: 15%;
-   color: #337ab7;
+ font-size: 0.8rem;
+ color: gray;
+ top: 15%;
+ color: #337ab7;
 }
 
 .msg-input textarea:focus {
@@ -256,24 +282,24 @@ textarea::before{
   left: 0;
 }
 
-#edit-message-button {
-    float: right;
+#edit-message-btn {
+  float: right;
 }
 
 .chat-list {
-    padding: 7px 0 0 0;
-    list-style-type: none;
-    box-sizing: border-box;
+  padding: 7px 0 0 0;
+  list-style-type: none;
+  box-sizing: border-box;
 }
 
 .msg {
-    list-style-type: none;
-    min-height: 32px;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-    color: #3c3a41;
-    margin-bottom: 7px;
+  list-style-type: none;
+  min-height: 32px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  color: #3c3a41;
+  margin-bottom: 7px;
 }
 
 .msg:hover {
@@ -281,52 +307,52 @@ textarea::before{
 }
 
 li {
-    display: list-item;
-    text-align: left;
-    padding: 6px 20px;
-    word-wrap: break-word;
-    list-style-position: unset;
-    overflow: hidden;
-    font-family: Roboto;
-    font-size: 14px;
-    line-height: 20px;   
+  display: list-item;
+  text-align: left;
+  padding: 6px 20px;
+  word-wrap: break-word;
+  list-style-position: unset;
+  overflow: hidden;
+  font-family: Roboto;
+  font-size: 14px;
+  line-height: 20px;   
 }
 
 .author {
-    float: left;
-    font-weight:bold;
+  float: left;
+  font-weight:bold;
 }
 
 .double-dot {
-    float:left;
-    margin-right: 5px;
+  float:left;
+  margin-right: 5px;
 }
 
 .text {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
 .date {
-    float: right;
-    color: #BDC3C7;
+  float: right;
+  color: #BDC3C7;
 }
 
 .changed {
-    float: left;
-    color: #BDC3C7;
-    font-size: 12px;
+  float: left;
+  color: #BDC3C7;
+  font-size: 12px;
 }
 
-#edit-message-button {
-    float: right;
-    position: relative;
-    opacity:0;
-    -webkit-transition: opacity 0.25s linear;
-    transition:opacity 0.25s linear;
+#edit-message-btn {
+  float: right;
+  position: relative;
+  opacity:0;
+  -webkit-transition: opacity 0.25s linear;
+  transition:opacity 0.25s linear;
 }
 
-li:hover #edit-message-button{
-    opacity:1;
+li:hover #edit-message-btn{
+  opacity:1;
 }
 
 /* 
@@ -334,36 +360,32 @@ Alert
 */
 
 .alert {
-    min-height: 36px;
-    padding: 5px 5px 5px 0;
+  min-height: 36px;
+  padding: 5px 5px 5px 0;
 }
 
 .alert-text {
-    font-weight:bold;
+  font-weight:bold;
 }
 
 .alert-info {
-    background-color: rgba(52, 152, 219, 0.5);
-    /* border:1px solid rgba(52, 152, 219, 1.0); */
-    color: rgba(52, 152, 219, 1.0);
+  background-color: rgba(52, 152, 219, 0.5);
+  color: rgba(52, 152, 219, 1.0);
 }
 
 .alert-success {
-    background-color: rgba(46, 204, 113, 0.5);
-    /* border:1px solid #27ae60; */
-    color: rgba(30, 130, 76, 1.0);
+  background-color: rgba(46, 204, 113, 0.5);
+  color: rgba(30, 130, 76, 1.0);
 }
 
 .alert-warning {
-    background-color: rgba(241, 196, 15, 0.5);
-    /* border:1px solid #F9690E; */
-    color: rgba(249, 105, 4, 1.0);
+  background-color: rgba(241, 196, 15, 0.5);
+  color: rgba(249, 105, 4, 1.0);
 }
 
 .alert-error {
-    background-color: rgba(231, 76, 60, 0.5);
-    /* border:1px solid #c0392b; */
-    color: rgba(231, 76, 60, 1.0);
+  background-color: rgba(231, 76, 60, 0.5);
+  color: rgba(231, 76, 60, 1.0);
 }
 
 /*  
@@ -402,16 +424,27 @@ input[type=text]:focus, #msg-edit-area:focus {
 Scroll
 */
 ::-webkit-scrollbar {
-    width: 12px;
+  width: 12px;
 }
 ::-webkit-scrollbar-thumb {
-    background-color: #999;
+  background-color: #999;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background-color: #aaa;
+  background-color: #aaa;
 }
 /*::-webkit-scrollbar-track {
         background-color: #eaeaea;
         border-left: 1px solid #ccc;
         } 
         */
+
+/* 
+Sticky Footer IE 6 
+*/
+/* * html .msg-footer {
+   position: absolute;
+   top:expression((0-(footer.offsetHeight)+
+    (document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)
+    +(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))
+   +'px');
+   } */
