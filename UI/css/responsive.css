@@ -34,6 +34,10 @@
         margin-left: 15px;
         margin-top: 25px;
     }
+
+    .search-contain {
+      font: 12px/1.21 Roboto;
+  }
 }
 
 @media (max-width: 48em) {
@@ -65,4 +69,8 @@
         top: 20%;
         padding-right: 17px;
     }
+
+    .search-contain {
+      font: 12px/1.21 Roboto;
+  }
 }
