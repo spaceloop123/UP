@@ -12,24 +12,6 @@ body {
   margin: 0 auto;
 }
 
-.header {
- color: #333;
- text-align: center;
- color: rgb(255, 255, 255);
- fill: rgb(255, 255, 255);
- top: 0px;
- bottom: 0px;
- padding: 0;
- background-color: rgb(79, 125, 201);
- width: 100%;
- height: 128px;
- position: fixed;
- -moz-box-sizing: border-box;
- box-sizing: border-box;
- box-shadow: rgba(0, 0, 0, 0.1180392) 0px 2px 4px, rgba(0, 0, 0, 0.1180392) 0px 0px 3px;
- z-index: 10;
-}
-
 /* 
 Message box 
 */
@@ -276,7 +258,6 @@ textarea::before{
   outline: none;
 }
 
-
 .msg-input textarea:focus ~ .bar::before {
   width: 100%;
   left: 0;
@@ -392,8 +373,7 @@ Alert
 Text area 
 */
 
-/* input[type=text], #msg-input-area, */
-input[type=text], #msg-edit-area {
+/* input[type=text], #msg-edit-area {
   -webkit-transition: all 0.30s ease-in-out;
   -moz-transition: all 0.30s ease-in-out;
   -ms-transition: all 0.30s ease-in-out;
@@ -404,7 +384,6 @@ input[type=text], #msg-edit-area {
   border: 1px solid #DDDDDD;
 }
 
-/* input[type=text]:focus, #msg-input-area:focus, */
 input[type=text]:focus, #msg-edit-area:focus {
   box-shadow: 0 0 5px rgba(183, 187, 189, 1);
   padding: 3px 0px 3px 3px;
@@ -419,7 +398,7 @@ input[type=text], #msg-edit-area {
 input[type=text]:focus, #msg-edit-area:focus {
   margin: 0;
 }
-
+*/
 /*
 Scroll
 */
@@ -448,3 +427,113 @@ Sticky Footer IE 6
     +(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))
    +'px');
    } */
+
+
+
+
+/*
+Header with search panel
+*/
+
+.header {
+ color: #333;
+ text-align: center;
+ color: rgb(255, 255, 255);
+ fill: rgb(255, 255, 255);
+ top: 0px;
+ bottom: 0px;
+ padding: 0;
+ background-color: rgb(79, 125, 201);
+ width: 100%;
+ height: 128px;
+ position: fixed;
+ -moz-box-sizing: border-box;
+ box-sizing: border-box;
+ box-shadow: rgba(0, 0, 0, 0.1180392) 0px 2px 4px, rgba(0, 0, 0, 0.1180392) 0px 0px 3px;
+ z-index: 10;
+ padding-right: 256px;
+ padding-left: 64px;
+}
+
+.search-contain {
+  width: 50%;
+  float: left;
+  top: 10%;
+  position: relative;
+  padding: 0;
+  margin: 5px;
+  border: none;
+  overflow: visible;
+  font: 14px/1.21 Roboto;
+}
+.search-contain input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px 10px 8px;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 120%;
+  outline: none;
+  cursor: text;
+  background: transparent;
+  color: #fff;
+}
+.search-contain input::-webkit-input-placeholder {
+  -webkit-transition: color 300ms ease;
+  transition: color 300ms ease;
+}
+.search-contain input:not(:focus)::-webkit-input-placeholder {
+  color: transparent;
+}
+.search-contain hr {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 2px;
+  border: none;
+  background: #fff;
+  font-size: 1px;
+  will-change: transform, visibility;
+  -webkit-transition: all 200ms ease-out;
+  transition: all 200ms ease-out;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  visibility: hidden;
+  z-index: 10;
+}
+.search-contain input:focus ~ hr {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+  visibility: visible;
+}
+.search-contain label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 120%;
+  color: #fff;
+  -webkit-transform-origin: 0 -150%;
+  transform-origin: 0 -150%;
+  -webkit-transition: -webkit-transform 300ms ease;
+  transition: -webkit-transform 300ms ease;
+  transition: transform 300ms ease;
+  transition: transform 300ms ease, -webkit-transform 300ms ease;
+  pointer-events: none;
+}
+.search-contain input:focus ~ label,
+.search-contain input:valid ~ label {
+  -webkit-transform: scale(0.6);
+  transform: scale(0.6);
+  color: rgb(79, 125, 201);
+}
+
+.header i {
+  float: left;
+  margin-right: 5px;
+}

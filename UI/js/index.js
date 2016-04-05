@@ -4,6 +4,7 @@ Global variables
 var user = document.getElementById("profile-name");
 var msgInputArea = document.getElementById("msg-input-area");
 var msgInputBtn = document.getElementById("msg-input-btn");
+
 /*
 Send created message by pressing ctrl+enter
 */

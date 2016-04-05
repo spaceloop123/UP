@@ -18,7 +18,6 @@
 
 		<div id="menu">
 			<div class="pure-menu">
-
 				
 				<div class="pure-menu-heading">
 					<div class="" id="card">
@@ -27,7 +26,11 @@
 							<div id="profile-name">My name</div>
 						</figure>	
 						<figure class="back">
-							hui
+							<fieldset class="profile-name-input">
+								<input type="text" id="myname-edit" placeholder="Username" required>
+								<hr>
+								<label>Username</label>
+							</fieldset>
 						</figure>
 					</div>
 					
@@ -45,7 +48,6 @@
 					<p>Participants</p>
 				</div>
 
-
 				<div class="users">
 					<a class="pure-menu-item" href="#">
 						<div class="pure-menu-link"><span class="fa fa-user fa-fw"></span>&nbsp; Username 1</div>
@@ -60,15 +62,22 @@
 						<div class="pure-menu-link"><span class="fa fa-user fa-fw"></span>&nbsp; Username 4</div>
 					</a>
 				</div>
-
-
 			</div>
 		</div>
 
 		<div id="page">
 			<div id="content_container">
 				<div id="content">
-					<div class="header"></div>
+					<div class="header">
+						<aside class="search-contain">
+							<input type="text" id="myname-edit" placeholder="" required>
+							<hr>
+							<label>
+								<i class="fa fa-search"></i>
+								Search for messages based on text, author or date
+							</label>
+						</aside>
+					</div>
 					<div class="body">
 						<div class="msg-box">
 							<div class="msg-body">
