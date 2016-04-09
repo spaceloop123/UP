@@ -1,18 +1,22 @@
 (function (window, document) {
 
+/*
+Side menu in mobile and tablet version
+*/
   var layout   = document.getElementById('layout'),
   menu     = document.getElementById('menu'),
   menuLink = document.getElementById('menuLink');
 
-  menuLink.onclick = function (e) {
+  menuLink.addEventListener("click", function (e) {
     e.preventDefault();
 
     toggleClass(layout, "active");
     toggleClass(menu, "active");
     toggleClass(menuLink, "active");
-  };
-
-
+  });
+/*
+Edit username 
+*/
   var isEdit = false;
   
   var menuBtn = document.getElementById("btn-group");
@@ -28,10 +32,6 @@
 
       user.textContent = document.getElementById("myname-edit").value;
 
-      var obj = {a:1,b:2,c:{d:3, e:4}};
-
-      JSON.stringify(obj, null, "    ");
-      
       isEdit = false;
     } else {
       toggleClass(document.getElementById("btn-container"), "active");

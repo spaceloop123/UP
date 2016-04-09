@@ -5,11 +5,15 @@
 	<title>Chat</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    
+    <link href="css/main/menu.css" rel="stylesheet"/>
+	<link href="css/main/content.css" rel="stylesheet"/>
+	
 	<link href="css/font-awesome.css" rel="stylesheet"/>
-	<link href="css/menu.css" rel="stylesheet"/>
-	<link href="css/content.css" rel="stylesheet"/>
-	<link href="css/responsive.css" rel="stylesheet"/>
+	
+	<link href="css/responsive/responsive.css" rel="stylesheet"/>
+
+	<link href="css/tools/input-fields.css" rel="stylesheet"/>
 </head>
 <body>
 
@@ -26,7 +30,7 @@
 							<div id="profile-name">My name</div>
 						</figure>	
 						<figure class="back">
-							<fieldset class="profile-name-input">
+							<fieldset class="text-input name">
 								<input type="text" id="myname-edit" placeholder="Username" required>
 								<hr>
 								<label>Username</label>
@@ -66,46 +70,31 @@
 		</div>
 
 		<div id="page">
-			<div id="content_container">
+			<div id="content-contain">
 				<div id="content">
-					<div class="header">
-						<aside class="search-contain">
-							<input type="text" id="myname-edit" placeholder="" required>
-							<hr>
-							<label>
-								<i class="fa fa-search"></i>
-								Search for messages based on text, author or date
-							</label>
-						</aside>
-					</div>
+					<div class="header"></div>
 					<div class="body">
 						<div class="msg-box">
 							<div class="msg-body">
 								<ul class="chat-list">
 									<div class="msg" id="my-msg">
 										<li>
-											<div class="author">
-												My name 
-											</div>
+											<div class="author">My name</div>
 											<span class="double-dot">:</span>
 											<div id="edit-message-btn"><i class="fa fa-pencil"></i></div>
-											<div class="text">
-												Lorem
-											</div>
-											<div class="date">
-												5.47pm
-											</div>
+											<div class="text">Hello</div>
+											<div class="date">10:15pm</div>
 										</li>
 									</div>
 								</ul>
 							</div>
 							<div class="msg-footer">
 								<div class="textarea-contain">
-									<div class="msg-input">
-										<textarea id="msg-input-area"></textarea>
-										<label for="textarea" class="control-label">Enter message...</label>
-										<i class="bar"></i>
-									</div>
+									<fieldset class="text-input msg">
+										<textarea type="text" id="msg-input-area" rows="2" placeholder="Enter message..." required></textarea>
+										<hr>
+										<label>Enter message...</label>
+									</fieldset>
 								</div>
 								<div class="btn-contain">
 									<div class="btn-send">

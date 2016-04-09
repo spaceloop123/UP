@@ -10,7 +10,7 @@ Send created message by pressing ctrl+enter
 */
 msgInputArea.addEventListener('keydown', function(e) {
 	if(e.keyCode == 13 && e.ctrlKey) {
-		if(msgInputArea.value === "") 
+		if(this.value === "") 
 			return false;
 
 		sendMessage(this.value);
@@ -21,7 +21,6 @@ msgInputArea.addEventListener('keydown', function(e) {
 });
 
 msgInputBtn.addEventListener('click', function() {
-	
 	if(msgInputArea.value === "") 
 		return true;
 
@@ -47,7 +46,6 @@ function sendMessage(value) {
 
 	document.body.scrollTop = document.body.scrollHeight - document.body.clientHeight;
 }
-
 /*
 Create message
 */
