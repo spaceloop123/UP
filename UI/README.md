@@ -25,3 +25,7 @@
 + Clean-up project code
 + New message input area
 + New name input area
+
+###UI 1.2.3 
+
++ Redesigned FAB in left-side menu
