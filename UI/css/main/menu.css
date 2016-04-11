@@ -195,149 +195,70 @@ Profile info
 }
 
 /*
-FAV Button
+FAB
 */
-#pencil-icon{
- margin-left: 16px;
- margin-top: 18px;
- position: absolute;
- z-index: 4;
-}
 
-#camera-icon{
- margin-left: 13px;
- margin-top: 18px;
- position: absolute;
- z-index: 4;
-}
-
-#plus-icon {
- margin-left: 22px;
- margin-top: 24px;
- position: absolute;
- z-index: 4;
- transition: transform 0.450s ease-in;
- visibility: visible;
-}
-
-#check-icon {
- margin-left: 20px;
- margin-top: 24px;
- position: absolute;
- z-index: 4;
- transition: transform 0.450s ease-in;
- visibility: visible;
-}
-
-#plus-icon.hidden,
-#check-icon.hidden {
-  visibility: hidden;
-}
-
-#plus-icon.rotate {
-  -webkit-transform: rotateZ(135deg) translate(-1px, 3px);
-  transform: rotateZ(135deg) translate(-1px, 3px);
-}
-
-.btn-container {
-  position: absolute;
-  margin-left: 175px;
-  margin-top: 96px;
-}
-
-.btn-container.edit {
-  position: absolute;
-  margin-left: 175px;
-  margin-top: 96px;
-}
-
-.btn-container.active .btn-secondary{
-  transform: translateX(-70px) scale(1);
-  opacity: 1;
-}
-
-.btn-container.active .btn-tertiary{
-  transform: translateY(-65px) scale(1);
-  opacity: 1;
-}
-
-.btn-container.edit .btn-secondary{
-  transform: translateX(0px) scale(1);
-  opacity: 1;
-}
-
-.btn-container.edit .btn-tertiary{
-  transform: translateY(0px) scale(1);
-  opacity: 1;
-}
-
-.btn {
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.4);
-  -webkit-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
-  -moz-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
-  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
-  background-color: #ff9800;
+#fab {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 64px;
+  height: 64px;
   position: absolute;
-  top: 0;
-  color: #fff;
+  background-color: #333;
+  
+  left: 175px;
+  top: 96px;
+
+  transform: scale(1, 1);
+
+  transition: left .25s, top .25s, border-radius .3s, transform .3s, box-shadow .3s;
+  transition-delay: .55s, .55s, .25s, .25s, .25s;
+  transition-timing-function: ease-out;
 }
 
-.btn-primary {
-  z-index: 3;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.4);
+#fab:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
-.btn-secondary {
-  z-index: 2;
-  margin-left: 5px;
-  width: 50px;
-  height: 50px;
-  transform: scale(0.4);
-  opacity: 0;
+#fab.active {
+  left: 96px;
+  top: 32px;
+  border-radius: 0;
+  box-shadow: none;
+  transform: scale(4, 2);
+
+  transition: left .25s, top .25s, border-radius .3s, transform .3s, box-shadow .3s;
+  transition-delay: 0s, 0s, .25s, .25s, .25s;
+  transition-timing-function: ease-in;
 }
 
-.btn-tertiary {
-  z-index: 1;
-  margin-left: 5px;
-  width: 50px;
-  height: 50px;
-  transform: scale(0.4);
-  opacity: 0;
-}
-
-/*
-Two-side card
-*/
-
-.pure-menu-heading #card {
-  width: 100%;
-  height: 128px;
+#close {
   position: absolute;
-  transform-style: preserve-3d;
-  transition: transform .450s;
+  left: 175px;
+  top: 25px;
+  visibility: hidden;
+  
+  transition: visibility .25s, transform .25s;
+  transition-delay: 0s, 0s;  
 }
 
-.pure-menu-heading #card figure {
-  margin: 0;
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
+#close.active {
+  visibility: visible;
+
+  transform: rotateZ(135deg);
+
+  transition: visibility .25s, transform .25s;
+  transition-delay: .75s, .75s;
 }
 
-.pure-menu-heading #card .front {
-  background: transparent;
+.text-input.name {
+  visibility: hidden;
+  transition: visibility .25s;
+  transition-delay: 0s;  
 }
 
-.pure-menu-heading #card .back {
-  background: #37474F;
-  transform: rotateX( 180deg );
-}
-
-.pure-menu-heading #card.flipped {
-  transform: rotateX( 180deg );
+.text-input.name.active {
+  visibility: visible;
+  transition: visibility .25s;
+  transition-delay: .75s;
 }

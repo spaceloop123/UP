@@ -5,8 +5,8 @@
 	<title>Chat</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link href="css/main/menu.css" rel="stylesheet"/>
+
+	<link href="css/main/menu.css" rel="stylesheet"/>
 	<link href="css/main/content.css" rel="stylesheet"/>
 	
 	<link href="css/font-awesome.css" rel="stylesheet"/>
@@ -23,7 +23,7 @@
 		<div id="menu">
 			<div class="pure-menu">
 				
-				<div class="pure-menu-heading">
+				<!-- <div class="pure-menu-heading">
 					<div class="" id="card">
 						<figure class="front">
 							<div class="profile-image"><img src="C:/up/UI_templates/images/user.png" alt=""></div>
@@ -31,7 +31,7 @@
 						</figure>	
 						<figure class="back">
 							<fieldset class="text-input name">
-								<input type="text" id="myname-edit" placeholder="Username" required>
+								<input type="text" id="myname-edit" required>
 								<hr>
 								<label>Username</label>
 							</fieldset>
@@ -46,6 +46,16 @@
 						<div class="btn btn-secondary" id="edit-btn"><i class="fa fa-pencil fa-lg" id="pencil-icon"></i></div>
 						<div class="btn btn-tertiary" id="camera-btn"><i class="fa fa-camera fa-lg" id="camera-icon"></i></div>
 					</div>
+				</div> -->
+				<div class="pure-menu-heading">
+					<div id="profile-name">My name</div>
+					<div id="fab"></div>
+					<i class="fa fa-close fa-lg fa-reverse" id="close"></i>
+					<fieldset class="text-input name" id="text-input-name">
+						<input type="text" id="myname-edit" required>
+						<hr>
+						<label>Username</label>
+					</fieldset>
 				</div>
 
 				<div class="title">
@@ -91,7 +101,7 @@
 							<div class="msg-footer">
 								<div class="textarea-contain">
 									<fieldset class="text-input msg">
-										<textarea type="text" id="msg-input-area" rows="2" placeholder="Enter message..." required></textarea>
+										<textarea type="text" id="msg-input-area" rows="2" required></textarea>
 										<hr>
 										<label>Enter message...</label>
 									</fieldset>
