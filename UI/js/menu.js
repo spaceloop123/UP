@@ -24,32 +24,45 @@ var fab = document.getElementById("fab");
 var close = document.getElementById("close");
 var textInputName = document.getElementById("text-input-name");
 var myName = document.getElementById("myname-edit");
+var pencilIcon = document.getElementById("pencil-icon");
 
 var user = document.getElementById("profile-name");
+
+var delay;
 
 fab.addEventListener("click", function(e) {
   e.preventDefault();
 
-  addClass(fab, "active");
-  addClass(close, "active");
-  addClass(textInputName, "active");
+  if(!isEdit) {
+    addClass(fab, "active");
+    addClass(close, "active");
+    addClass(textInputName, "active");
+    addClass(pencilIcon, "active");
 
-  isEdit = true;
-
-  document.getElementById("myname-edit").focus();
-  document.getElementById("myname-edit").value = user.textContent;
+    isEdit = true;
+    delay = setTimeout(focusDelay, 800);
+    document.getElementById("myname-edit").value = user.textContent;
+  }
 });
 
 close.addEventListener("click", function(e) {
   e.preventDefault();
 
-  removeClass(fab, "active");
-  removeClass(close, "active");
-  removeClass(textInputName, "active");
+  if(isEdit) {
+    removeClass(fab, "active");
+    removeClass(close, "active");
+    removeClass(textInputName, "active");
+    removeClass(pencilIcon, "active");
 
-  user.textContent = document.getElementById("myname-edit").value;
+    user.textContent = document.getElementById("myname-edit").value;
 
-  isEdit = false;
+    isEdit = false;
+    clearTimeout(delay);
+  }
 });
+
+function focusDelay() {
+  document.getElementById("myname-edit").focus();
+}
 
 }(this, this.document));
