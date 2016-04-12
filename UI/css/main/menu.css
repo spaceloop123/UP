@@ -41,15 +41,10 @@
   overflow-x: hidden;
 }
 
-#menu a {
+#menu .users a {
   color: #000;
   border: none;
   text-decoration: none;
-}
-
-#menu .card {
-  height: 170px;
-  overflow: hidden;
 }
 
 #menu .pure-menu {
@@ -163,29 +158,6 @@ Dynamic btn For Responsive Menu
 Profile info
 */
 
-.profile-image {
-  border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  margin-left: 11px;
-  margin-top: 11px;
-  position: absolute;
-  box-shadow: 0 0 8px rgba(0, 0, 0.0980392, 0.0980392);
-  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0.0980392, 0.0980392);
-  -moz-box-shadow: 0 0 8px rgba(0, 0, 0.0980392, 0.0980392);   
-}
-
-.profile-image img {
-  opacity: 100;
-  filter: alpha(opacity=0);
-}
-
-.profile-image, 
-.profile-image img {
-  width: 82px;
-  height: 82px;
-}
-
 #profile-name {
  margin-left: 11px;
  margin-top: 96px;
@@ -207,15 +179,14 @@ FAB
   position: absolute;
   background-color: #333;
 
-  
   left: 175px;
   top: 96px;
 
   transform: scale(1, 1);
 
-  transition: left .25s, top .25s, border-radius .3s, transform .3s, box-shadow .3s;
-  transition-delay: .55s, .55s, .25s, .25s, .25s;
-  transition-timing-function: ease-out;
+  transition: left .3s, top .3s, transform .3s, border-radius .25s;
+  transition-delay: .1s, .1s, .1s, 0s;
+  transition-timing-function: cubic-bezier(.55,0,.1,1);
 }
 
 #fab:hover {
@@ -225,15 +196,38 @@ FAB
 #fab.active {
   left: 96px;
   top: 32px;
-  border-radius: 0;
+  border-radius: 0%;
+
   box-shadow: none;
   transform: scale(4, 2);
 
-  transition: left .25s, top .25s, border-radius .3s, transform .3s, box-shadow .3s;
-  transition-delay: 0s, 0s, .25s, .25s, .25s;
-  transition-timing-function: ease-in;
+  transition: left .3s, top .3s, transform .3s, border-radius .25s;
+  transition-delay: 0s, 0s, 0s, .1s;
+  transition-timing-function: cubic-bezier(.55,0,.1,1);
 }
 
+#accept,
+#decline {
+  top: 76px;
+  visibility: hidden;
+  transition: visibility .25s;  
+}
+
+#accept.active,
+#decline.active {
+  visibility: visible;
+  transition: visibility .25s;
+  transition-delay: .25s;
+}
+
+#accept {
+  left: 59px;
+}
+
+#decline {
+  left: 155px;
+}
+/* 
 #close {
   position: absolute;
   left: 205px;
@@ -247,20 +241,22 @@ FAB
   visibility: visible;
 
   transition: visibility .25s;
-  transition-delay: .75s;
-}
+  transition-delay: .25s;
+} */
 
 .text-input.name {
   top: 70px;
   visibility: hidden;
-  transition: visibility .25s;
-  transition-delay: 0s;  
+  
+  transition: visibility .00005s;
+  transition-delay: .0s;
 }
 
 .text-input.name.active {
   visibility: visible;
+  
   transition: visibility .25s;
-  transition-delay: .75s;
+  transition-delay: .25s;
 }
 
 #pencil-icon {
@@ -271,12 +267,12 @@ FAB
   visibility: visible;
 
   transition: visibility .25s;
-  transition-timing-function: ease-out;
+  transition-delay: .25s;
 }
 
 #pencil-icon.active {
   visibility: hidden;
 
-  transition: visibility .25s;
-  transition-timing-function: ease-in;
+  transition: visibility .00005s;
+  transition-delay: 0s;
 }

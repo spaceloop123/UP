@@ -12,7 +12,7 @@ msgInputArea.addEventListener('keydown', function(e) {
 	if(e.keyCode == 13 && e.ctrlKey) {
 		if(this.value === "") 
 			return false;
-
+		addClass(document.getElementById("material"), "active");
 		sendMessage(this.value);
 		this.value = "";
 

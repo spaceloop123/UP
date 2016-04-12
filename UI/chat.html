@@ -14,6 +14,7 @@
 	<link href="css/responsive/responsive.css" rel="stylesheet"/>
 
 	<link href="css/tools/input-fields.css" rel="stylesheet"/>
+	<link href="css/tools/buttons.css" rel="stylesheet"/>
 </head>
 <body>
 
@@ -27,73 +28,74 @@
 					<div id="fab">
 						<i class="fa fa-pencil fa-lg fa-inverse" id="pencil-icon"></i>
 					</div>
-					<span class="fa-stack fa-lg" id="close">
+					<!-- <span class="fa-stack fa-lg" id="close">
 						<i class="fa fa-circle fa-stack-2x fa-inverse"></i>
 						<i class="fa fa-check fa-stack-1x"></i>
-					</span>
+					</span> -->
 					<fieldset class="text-input name" id="text-input-name">
 						<input type="text" id="myname-edit" required>
 						<hr>
 						<label>Username</label>
 					</fieldset>
-				</div>
+					<a class="btn btn-default" id="accept" href="#">Accept</a>
+					<a class="btn btn-warning" id="decline" href="#">Decline</a>
+			</div>
 
-				<div class="title">
-					<p>Participants</p>
-				</div>
+			<div class="title">
+				<p>Participants</p>
+			</div>
 
-				<div class="users">
-					<a class="pure-menu-item" href="#">
-						<div class="pure-menu-link"><span class="fa fa-user fa-fw"></span>&nbsp; Username 1</div>
-					</a>
-					<a class="pure-menu-item" href="#">
-						<div class="pure-menu-link"><span class="fa fa-user fa-fw"></span>&nbsp; Username 2</div>
-					</a>
-					<a class="pure-menu-item" href="#">
-						<div class="pure-menu-link"><span class="fa fa-user fa-fw"></span>&nbsp; Username 3</div>
-					</a>
-					<a class="pure-menu-item" href="#">
-						<div class="pure-menu-link"><span class="fa fa-user fa-fw"></span>&nbsp; Username 4</div>
-					</a>
-				</div>
+			<div class="users">
+				<a class="pure-menu-item" href="#">
+					<div class="pure-menu-link"><span class="fa fa-user fa-fw"></span>&nbsp; Username 1</div>
+				</a>
+				<a class="pure-menu-item" href="#">
+					<div class="pure-menu-link"><span class="fa fa-user fa-fw"></span>&nbsp; Username 2</div>
+				</a>
+				<a class="pure-menu-item" href="#">
+					<div class="pure-menu-link"><span class="fa fa-user fa-fw"></span>&nbsp; Username 3</div>
+				</a>
+				<a class="pure-menu-item" href="#">
+					<div class="pure-menu-link"><span class="fa fa-user fa-fw"></span>&nbsp; Username 4</div>
+				</a>
 			</div>
 		</div>
+	</div>
 
-		<div id="page">
-			<div id="content-contain">
-				<div id="content">
-					<div class="header"></div>
-					<div class="body">
-						<div class="msg-box">
-							<div class="msg-body">
-								<ul class="chat-list">
-									<div class="msg" id="my-msg">
-										<li>
-											<div class="author">My name</div>
-											<span class="double-dot">:</span>
-											<div id="edit-message-btn"><i class="fa fa-pencil"></i></div>
-											<div class="text">Hello</div>
-											<div class="date">10:15pm</div>
-										</li>
-									</div>
-								</ul>
-							</div>
-							<div class="msg-footer">
-								<div class="textarea-contain">
-									<fieldset class="text-input msg">
-										<textarea type="text" id="msg-input-area" rows="2" required></textarea>
-										<hr>
-										<label>Enter message...</label>
-									</fieldset>
+	<div id="page">
+		<div id="content-contain">
+			<div id="content">
+				<div class="header"></div>
+				<div class="body">
+					<div class="msg-box">
+						<div class="msg-body">
+							<ul class="chat-list">
+								<div class="msg" id="my-msg">
+									<li>
+										<div class="author">My name</div>
+										<span class="double-dot">:</span>
+										<div id="edit-message-btn"><i class="fa fa-pencil"></i></div>
+										<div class="text">Hello</div>
+										<div class="date">10:15pm</div>
+									</li>
 								</div>
-								<div class="btn-contain">
-									<div class="btn-send">
-										<div id="msg-input-btn">
-											<span class="fa-stack fa-2x">
-												<i class="fa fa-circle fa-stack-2x"></i>
-												<i class="fa fa-paper-plane fa-stack-1x fa-inverse" id="paper-plane"></i>
-											</span>
-										</div>
+							</ul>
+						</div>
+						<div class="msg-footer">
+							<div class="textarea-contain">
+								<fieldset class="text-input msg">
+									<textarea type="text" id="msg-input-area" rows="2" required></textarea>
+									<hr>
+									<label>Enter message...</label>
+								</fieldset>
+							</div>
+							<div class="btn-contain">
+								<div class="btn-send">
+									<div id="msg-input-btn">
+										<span class="fa-stack fa-2x">
+											<i class="fa fa-circle fa-stack-2x"></i>
+											<i class="fa fa-paper-plane fa-stack-1x fa-inverse" id="paper-plane"></i>
+										</span>
 									</div>
 								</div>
 							</div>
@@ -102,10 +104,11 @@
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<script src="js/class-work.js"></script>	
-		<script src="js/menu.js"></script>
-		<script src="js/index.js"></script>
+	<script src="js/class-work.js"></script>	
+	<script src="js/menu.js"></script>
+	<script src="js/index.js"></script>
 
-	</body>
-	</html>
+</body>
+</html>

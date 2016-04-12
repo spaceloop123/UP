@@ -21,7 +21,9 @@ Test
 var isEdit = false;
 
 var fab = document.getElementById("fab");
-var close = document.getElementById("close");
+// var close = document.getElementById("close");
+var accept = document.getElementById("accept");
+var decline = document.getElementById("decline");
 var textInputName = document.getElementById("text-input-name");
 var myName = document.getElementById("myname-edit");
 var pencilIcon = document.getElementById("pencil-icon");
@@ -35,22 +37,26 @@ fab.addEventListener("click", function(e) {
 
   if(!isEdit) {
     addClass(fab, "active");
-    addClass(close, "active");
+    // addClass(close, "active");
+    addClass(accept, "active");
+    addClass(decline, "active");
     addClass(textInputName, "active");
     addClass(pencilIcon, "active");
 
     isEdit = true;
-    delay = setTimeout(focusDelay, 800);
+    delay = setTimeout(focusDelay, 250);
     document.getElementById("myname-edit").value = user.textContent;
   }
 });
 
-close.addEventListener("click", function(e) {
+accept.addEventListener("click", function(e) {
   e.preventDefault();
 
   if(isEdit) {
     removeClass(fab, "active");
-    removeClass(close, "active");
+    // removeClass(close, "active");
+    removeClass(accept, "active");
+    removeClass(decline, "active");
     removeClass(textInputName, "active");
     removeClass(pencilIcon, "active");
 
