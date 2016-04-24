@@ -29,3 +29,7 @@
 ###UI 1.2.3 
 
 + Redesigned FAB in left-side menu
+
+###UI 1.3
+
++ Edit your messages

@@ -16,14 +16,12 @@
 	cursor: pointer;
 }
 
-.btn:hover {
-  box-shadow: 1px 6px 15px rgba(0, 0, 0, 0.5);
+.btn:hover,
+.btn:active {
+  /* box-shadow: 1px 6px 15px rgba(0, 0, 0, 0.5); */
+  border: none;
 }
 
 .btn-default {
-	color: #03A9F4;
-}
-
-.btn-warning {
-	color: #F44336;
+	color: #f1c40f;
 }

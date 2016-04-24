@@ -114,7 +114,7 @@
 .text-input textarea:focus ~ label,
 .text-input textarea:valid ~ label {
   color: #337ab7;
-  font-size: 150%;
+  font-size: 140%;
 }
 
 .text-input.name label {

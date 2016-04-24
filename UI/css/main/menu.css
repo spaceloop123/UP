@@ -177,20 +177,20 @@ FAB
   width: 64px;
   height: 64px;
   position: absolute;
-  background-color: #333;
+  background-color: #FF9100;
 
   left: 175px;
   top: 96px;
 
   transform: scale(1, 1);
 
-  transition: left .3s, top .3s, transform .3s, border-radius .25s;
+  transition: left .3s, top .3s, transform .3s, border-radius .25s, background-color .25s;
   transition-delay: .1s, .1s, .1s, 0s;
   transition-timing-function: cubic-bezier(.55,0,.1,1);
 }
 
 #fab:hover {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 #fab.active {
@@ -198,66 +198,57 @@ FAB
   top: 32px;
   border-radius: 0%;
 
+  background-color: #34495e;
+  color: #333;
+
   box-shadow: none;
   transform: scale(4, 2);
 
-  transition: left .3s, top .3s, transform .3s, border-radius .25s;
+  transition: left .3s, top .3s, transform .3s, border-radius .25s, background-color .25s;
   transition-delay: 0s, 0s, 0s, .1s;
   transition-timing-function: cubic-bezier(.55,0,.1,1);
+}
+
+/*
+FAB's controls
+*/
+
+#accept,
+#decline,
+.text-input.name {
+  visibility: hidden;
+  transition: visibility .00005s;
+  transition-delay: .0s;
+}
+
+#accept.active,
+#decline.active, 
+.text-input.name.active {
+ visibility: visible;
+ transition: visibility .25s;
+ transition-delay: .25s;
 }
 
 #accept,
 #decline {
   top: 76px;
-  visibility: hidden;
-  transition: visibility .25s;  
-}
-
-#accept.active,
-#decline.active {
-  visibility: visible;
-  transition: visibility .25s;
-  transition-delay: .25s;
 }
 
 #accept {
-  left: 59px;
+  left: 155px;
 }
 
 #decline {
-  left: 155px;
+  left: 59px;
 }
-/* 
-#close {
-  position: absolute;
-  left: 205px;
-  top: 78px;
-  visibility: hidden;
-  
-  transition: visibility .25s;  
-}
-
-#close.active {
-  visibility: visible;
-
-  transition: visibility .25s;
-  transition-delay: .25s;
-} */
 
 .text-input.name {
   top: 70px;
-  visibility: hidden;
-  
-  transition: visibility .00005s;
-  transition-delay: .0s;
 }
 
-.text-input.name.active {
-  visibility: visible;
-  
-  transition: visibility .25s;
-  transition-delay: .25s;
-}
+/*
+FAB's pencil icon
+*/
 
 #pencil-icon {
   margin-left: 22px;

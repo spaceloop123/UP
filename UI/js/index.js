@@ -4,7 +4,6 @@ Global variables
 var user = document.getElementById("profile-name");
 var msgInputArea = document.getElementById("msg-input-area");
 var msgInputBtn = document.getElementById("msg-input-btn");
-
 /*
 Send created message by pressing ctrl+enter
 */
@@ -12,8 +11,15 @@ msgInputArea.addEventListener('keydown', function(e) {
 	if(e.keyCode == 13 && e.ctrlKey) {
 		if(this.value === "") 
 			return false;
-		addClass(document.getElementById("material"), "active");
-		sendMessage(this.value);
+		
+		if(!isEditMessage) {
+			sendMessage(this.value);
+		} else {
+			isEditMessage = false;
+			
+			editMessage(this.value);
+		}
+
 		this.value = "";
 
 		return false;
@@ -24,16 +30,25 @@ msgInputBtn.addEventListener('click', function() {
 	if(msgInputArea.value === "") 
 		return true;
 
-	addClass(this, "active");
-	sendMessage(msgInputArea.value);
+	if(!isEditMessage) {
+		addClass(this, "active");
+
+		sendMessage(msgInputArea.value);
+		
+		removeClass(this, "active");
+	} else {
+		isEditMessage = false;
+
+		editMessage(msgInputArea.value);	
+	}
+	
 	msgInputArea.value = "";
-	removeClass(this, "active");
 
 	return false;
 }, true);
 
 /*
-Create message
+Send message
 */
 function sendMessage(value) {
 	if(!value)
@@ -124,7 +139,7 @@ function formatDate(date) {
 
 function createEditbtn() {
 	var div = document.createElement("div");
-	div.id = "edit-message-btn";
+	div.className = "edit-mes";
 	
 	var i = document.createElement("i");
 	i.className = "fa fa-pencil";
@@ -132,4 +147,62 @@ function createEditbtn() {
 	div.appendChild(i);
 
 	return div;
+}
+
+/*
+Edit message
+*/
+function run() {
+	var msgBody = document.getElementsByClassName('msg-body')[0];
+	msgBody.addEventListener('click', editClickEvent);
+}
+
+var isEditMessage = false;
+
+function editClickEvent(e) {
+	var elem = e.target;
+	if(elem.className === "fa fa-pencil" && !isEditMessage) {
+		var li = elem.offsetParent.parentElement;
+		var text = getText(li);
+
+		if(!isEditMessage) {
+			isEditMessage = true;
+
+			msgInputArea.value = text;
+			document.getElementById("msg-input-area").focus();
+
+			addClass(li.parentElement, "active");
+		} else {
+			isEditMessage = false;
+
+			removeClass(li.parentElement, "active");
+		}
+	}
+}
+
+function getText(li) {
+	var text = "";
+	for (var i = li.childNodes.length - 1; i >= 0; i--) {
+		if(li.childNodes[i].className === "text") {
+			text = li.childNodes[i].innerHTML;
+			break;
+		}
+	}	
+	return text;
+}
+
+function editMessage(text) {
+	var messages = document.getElementsByClassName("chat-list")[0];
+	for (var i = messages.childNodes.length - 1; i >= 0; i--) {
+		if(messages.childNodes[i].className === "msg active") {
+			var li = messages.childNodes[i].firstElementChild;
+			for (var j = li.childNodes.length - 1; j >= 0; j--) {
+				if(li.childNodes[j].className === "text") {
+					li.childNodes[j].innerHTML = text;
+					break;
+				}
+			}
+			removeClass(messages.childNodes[i], "active");
+		}
+	}
 }

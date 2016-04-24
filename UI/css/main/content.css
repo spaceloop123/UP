@@ -181,7 +181,7 @@ textarea::before{
   resize: none;
 }
 
-#edit-message-btn {
+.edit-mes {
   float: right;
 }
 
@@ -242,7 +242,7 @@ li {
   font-size: 12px;
 }
 
-#edit-message-btn {
+.edit-mes {
   float: right;
   position: relative;
   opacity:0;
@@ -250,14 +250,13 @@ li {
   transition:opacity 0.25s linear;
 }
 
-li:hover #edit-message-btn{
+li:hover .edit-mes{
   opacity:1;
 }
 
 /* 
 Alert 
 */
-
 .alert {
   min-height: 36px;
   padding: 5px 5px 5px 0;
@@ -298,22 +297,17 @@ Scroll
 ::-webkit-scrollbar-thumb:hover {
   background-color: #aaa;
 }
-/*::-webkit-scrollbar-track {
-        background-color: #eaeaea;
-        border-left: 1px solid #ccc;
-        } 
-        */
 
 /* 
 Sticky Footer IE 6 
 */
-/* * html .msg-footer {
+ /* * html .msg-footer {
    position: absolute;
    top:expression((0-(footer.offsetHeight)+
     (document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)
     +(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))
    +'px');
-   } */
+   }  */
 
 
 /*
@@ -336,5 +330,4 @@ Header
  box-sizing: border-box;
  box-shadow: rgba(0, 0, 0, 0.1180392) 0px 2px 4px, rgba(0, 0, 0, 0.1180392) 0px 0px 3px;
  z-index: 10;
- /* padding-right: 256px; */
 }
