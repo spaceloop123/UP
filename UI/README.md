@@ -33,3 +33,7 @@
 ###UI 1.3
 
 + Edit your messages
+
+###UI 1.3.1
+
++ Delete your messages
