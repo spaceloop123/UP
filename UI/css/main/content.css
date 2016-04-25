@@ -134,7 +134,6 @@ html,body{
 
 .btn-contain {
   float: right;
-  color: rgb(79, 125, 201);
   margin-right: 2%;
   margin-top: -20px;
   position: relative;
@@ -149,11 +148,18 @@ html,body{
   transform: translate(-50%, -50%);
 }
 
+.icon.plane {
+  color: rgb(79, 125, 201);
+}
+
+.icon.pencil {
+  color: #FF9100;
+}
+
 #msg-input-btn{
   border: none;
   cursor: pointer;
   background-color: transparent;
-  color: rgb(79, 125, 201);
   cursor: pointer;
 }
 
@@ -165,14 +171,12 @@ html,body{
   transition: transform 0.1s ease-in;
 }
 
-#paper-plane:hover {
-  transform: rotate(45deg);
+#paper-plane.fa-paper-plane:hover {
+  transform: rotate(25deg);
 }
 
-textarea,
-textarea::after,
-textarea::before{
-  box-sizing: border-box;
+#paper-plane.fa-pencil:hover {
+  transform: rotate(-25deg);
 }
 
 #msg-edit-area {
@@ -199,10 +203,27 @@ textarea::before{
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
   color: #3c3a41;
   margin-bottom: 7px;
+
+  -webkit-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  backface-visibility: hidden;
 }
 
 .msg:hover {
   box-shadow: 0 1px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 1px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+}
+
+.msg.active {
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.4);
+  -webkit-transform: scale(1.22, 1.22);
+  transform: scale(1.22, 1.22);
+  -webkit-perspective: 1000;
+  -webkit-filter: blur(0);
+  -webkit-transform: translateZ(0);
+}
+
+.msg.deleted {
+  background-color: #f9f9f9;
 }
 
 li {
@@ -215,6 +236,7 @@ li {
   font-family: Roboto;
   font-size: 14px;
   line-height: 20px;   
+  font-weight: 400;
 }
 
 .author {
@@ -242,6 +264,10 @@ li {
   font-size: 12px;
 }
 
+.msg.deleted.changed {
+  color: #f9f9f9;
+}
+
 .edit-mes {
   float: right;
   position: relative;
@@ -251,7 +277,17 @@ li {
 }
 
 li:hover .edit-mes{
-  opacity:1;
+  opacity: 1;
+}
+
+.edit-mes i.fa.fa-pencil {
+  float: left;
+  margin-right: 3px;
+}
+
+.edit-mes i.fa.fa-trash {
+  float: right;
+  margin-left: 3px;
 }
 
 /* 
@@ -313,7 +349,6 @@ Sticky Footer IE 6
 /*
 Header
 */
-
 .header {
  color: #333;
  text-align: center;
@@ -330,4 +365,64 @@ Header
  box-sizing: border-box;
  box-shadow: rgba(0, 0, 0, 0.1180392) 0px 2px 4px, rgba(0, 0, 0, 0.1180392) 0px 0px 3px;
  z-index: 10;
+}
+
+/*
+Loading
+*/
+.msg > li {
+  position: relative;
+}
+
+.dot-container {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border: 2px solid rgb(79, 125, 201);
+  border-radius: 50%;
+  float: left;
+  margin: 0 5px;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-animation: fx 1000ms ease infinite 0ms;
+  animation: fx 1000ms ease infinite 0ms;
+}
+
+.dot:nth-child(2) {
+  -webkit-animation: fx 1000ms ease infinite 300ms;
+  animation: fx 1000ms ease infinite 300ms;
+}
+
+.dot:nth-child(3) {
+  -webkit-animation: fx 1000ms ease infinite 600ms;
+  animation: fx 1000ms ease infinite 600ms;
+}
+
+@-webkit-keyframes fx {
+  50% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fx {
+  50% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }

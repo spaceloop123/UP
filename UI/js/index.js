@@ -15,8 +15,9 @@ msgInputArea.addEventListener('keydown', function(e) {
 		if(!isEditMessage) {
 			sendMessage(this.value);
 		} else {
+			switchBtnIcon();
 			isEditMessage = false;
-			
+
 			editMessage(this.value);
 		}
 
@@ -37,6 +38,7 @@ msgInputBtn.addEventListener('click', function() {
 		
 		removeClass(this, "active");
 	} else {
+		switchBtnIcon();
 		isEditMessage = false;
 
 		editMessage(msgInputArea.value);	
@@ -141,10 +143,13 @@ function createEditbtn() {
 	var div = document.createElement("div");
 	div.className = "edit-mes";
 	
-	var i = document.createElement("i");
-	i.className = "fa fa-pencil";
+	var pencil = document.createElement("i");
+	pencil.className = "fa fa-pencil";
+	var trash = document.createElement("i");
+	trash.className = "fa fa-trash";
 
-	div.appendChild(i);
+	div.appendChild(pencil);
+	div.appendChild(trash);
 
 	return div;
 }
@@ -166,6 +171,7 @@ function editClickEvent(e) {
 		var text = getText(li);
 
 		if(!isEditMessage) {
+			switchBtnIcon();
 			isEditMessage = true;
 
 			msgInputArea.value = text;
@@ -173,10 +179,14 @@ function editClickEvent(e) {
 
 			addClass(li.parentElement, "active");
 		} else {
+			switchBtnIcon();
 			isEditMessage = false;
-
+			
 			removeClass(li.parentElement, "active");
 		}
+	} else if(elem.className === "fa fa-trash" && !isEditMessage) {
+		var li = elem.offsetParent.parentElement;
+		deleteMessage(li);
 	}
 }
 
@@ -202,7 +212,79 @@ function editMessage(text) {
 					break;
 				}
 			}
+			if(!isChangedDivExists(li)) {
+				var div = document.createElement("div");
+				div.className = "changed";
+				div.textContent = "Edited";
+				li.appendChild(div);	
+			}
 			removeClass(messages.childNodes[i], "active");
 		}
 	}
+}
+
+function isChangedDivExists(li) {
+	for (var j = li.childNodes.length - 1; j >= 0; j--) {
+		if(li.childNodes[j].className === "changed") {
+			return true;
+		}
+	}
+	return false;
+}
+
+function switchBtnIcon() {
+	if(!isEditMessage) {
+		removeClass(document.getElementById("paper-plane"), "fa-paper-plane");
+		addClass(document.getElementById("paper-plane"), "fa-pencil");
+
+		removeClass(document.getElementById("msg-input-btn"), "plane");	
+		addClass(document.getElementById("msg-input-btn"), "pencil");
+		
+	} else {
+		removeClass(document.getElementById("paper-plane"), "fa-pencil");
+		addClass(document.getElementById("paper-plane"), "fa-paper-plane");		
+
+		removeClass(document.getElementById("msg-input-btn"), "pencil");	
+		addClass(document.getElementById("msg-input-btn"), "plane");	
+	}
+}
+
+/*
+Delete message
+*/
+function deleteMessage(li) {
+	addClass(li.parentElement, "loading");
+
+	var dotContainer = createDotContainer();
+
+	li.appendChild(dotContainer);
+
+	setTimeout(function() {
+		removeClass(li.parentElement, 'loading');
+		addClass(li.parentElement, "deleted");
+
+		while (li.firstChild) {
+			li.removeChild(li.firstChild);
+		}
+
+		var div = document.createElement("div");
+		div.className = "changed";
+		div.textContent = "Deleted by " + user.textContent;
+
+		li.appendChild(div);
+	}, 1500);
+}
+
+function createDotContainer() {
+	var div = document.createElement("div");
+	div.className = "dot-container";
+	
+	var dot;
+	for (var i = 0; i < 3; i++) {
+		dot = document.createElement("div");
+		dot.className = "dot";
+		div.appendChild(dot);
+	}
+
+	return div;
 }
