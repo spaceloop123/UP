@@ -30,7 +30,7 @@
 
 + Redesigned FAB in left-side menu
 
-###UI 1.3
+##UI 1.3
 
 + Edit your messages
 
