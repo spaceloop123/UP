@@ -37,3 +37,12 @@
 ###UI 1.3.1
 
 + Delete your messages
+
+###UI 1.3.2
+
++ Added alert messages when user changed nickname
+
+###UI 1.3.3
+
++ Added dialog delete message system
++ Added raised buttons

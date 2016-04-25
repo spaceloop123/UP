@@ -5,6 +5,14 @@ var user = document.getElementById("profile-name");
 var msgInputArea = document.getElementById("msg-input-area");
 var msgInputBtn = document.getElementById("msg-input-btn");
 /*
+Run
+*/
+function run() {
+	var msgBody = document.getElementsByClassName('msg-body')[0];
+	msgBody.addEventListener('click', editClickEvent);
+	// load();
+}
+/*
 Send created message by pressing ctrl+enter
 */
 msgInputArea.addEventListener('keydown', function(e) {
@@ -157,11 +165,6 @@ function createEditbtn() {
 /*
 Edit message
 */
-function run() {
-	var msgBody = document.getElementsByClassName('msg-body')[0];
-	msgBody.addEventListener('click', editClickEvent);
-}
-
 var isEditMessage = false;
 
 function editClickEvent(e) {
@@ -186,7 +189,8 @@ function editClickEvent(e) {
 		}
 	} else if(elem.className === "fa fa-trash" && !isEditMessage) {
 		var li = elem.offsetParent.parentElement;
-		deleteMessage(li);
+		addClass(li.parentElement, "delete");
+		deleteMessage(li.parentElement);
 	}
 }
 
@@ -252,28 +256,56 @@ function switchBtnIcon() {
 /*
 Delete message
 */
-function deleteMessage(li) {
-	addClass(li.parentElement, "loading");
+var cancelBtn = document.getElementById("cancel");
+var deleteBtn = document.getElementById("delete");
 
-	var dotContainer = createDotContainer();
-
-	li.appendChild(dotContainer);
-
-	setTimeout(function() {
-		removeClass(li.parentElement, 'loading');
-		addClass(li.parentElement, "deleted");
-
-		while (li.firstChild) {
-			li.removeChild(li.firstChild);
-		}
-
-		var div = document.createElement("div");
-		div.className = "changed";
-		div.textContent = "Deleted by " + user.textContent;
-
-		li.appendChild(div);
-	}, 1500);
+function deleteMessage(div) {
+	addClass(document.getElementById("overflow"), "active");
+	addClass(document.getElementById("dialog"), "active");
+	document.getElementById("dialog").focus();
 }
+
+cancelBtn.addEventListener("click", function(e) {
+	e.preventDefault();
+
+	var messages = document.getElementsByClassName("chat-list")[0];
+	for (var i = messages.childNodes.length - 1; i >= 0; i--) {
+		if(messages.childNodes[i].className === "msg delete") {
+			removeClass(messages.childNodes[i], "delete");
+			break;
+		}
+	}
+
+	removeClass(document.getElementById("overflow"), "active");
+	removeClass(document.getElementById("dialog"), "active");
+});
+
+deleteBtn.addEventListener("click", function(e) {
+	e.preventDefault();
+
+	var messages = document.getElementsByClassName("chat-list")[0];
+	for (var i = messages.childNodes.length - 1; i >= 0; i--) {
+		if(messages.childNodes[i].className === "msg delete") {
+			var li = messages.childNodes[i].firstElementChild;
+			addClass(li.parentElement, "deleted");
+
+			while (li.firstChild) {
+				li.removeChild(li.firstChild);
+			}
+
+			var div = document.createElement("div");
+			div.className = "changed";
+			div.textContent = "Deleted by " + user.textContent;
+
+			li.appendChild(div);
+
+			removeClass(messages.childNodes[i], "delete");
+		}
+	}
+
+	removeClass(document.getElementById("overflow"), "active");
+	removeClass(document.getElementById("dialog"), "active");
+});
 
 function createDotContainer() {
 	var div = document.createElement("div");
