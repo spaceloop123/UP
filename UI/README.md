@@ -46,3 +46,8 @@
 
 + Added dialog delete message system
 + Added raised buttons
+
+##UI 1.4
+
++ Added Local Storage
++ Clean-up code
