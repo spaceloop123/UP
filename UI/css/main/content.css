@@ -222,7 +222,7 @@ html,body{
   -webkit-transform: translateZ(0);
 }
 
-.msg.deleted {
+.msg.removed {
   background-color: #f9f9f9;
 }
 
@@ -264,7 +264,7 @@ li {
   font-size: 12px;
 }
 
-.msg.deleted.changed {
+.msg.removed.changed {
   color: #f9f9f9;
 }
 
@@ -367,66 +367,6 @@ Header
  box-sizing: border-box;
  box-shadow: rgba(0, 0, 0, 0.1180392) 0px 2px 4px, rgba(0, 0, 0, 0.1180392) 0px 0px 3px;
  z-index: 10;
-}
-
-/*
-Loading
-*/
-.msg > li {
-  position: relative;
-}
-
-.dot-container {
-  position: absolute;
-  top: 85%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  border: 2px solid rgb(79, 125, 201);
-  border-radius: 50%;
-  float: left;
-  margin: 0 5px;
-  -webkit-transform: scale(0);
-  transform: scale(0);
-  -webkit-animation: fx 1000ms ease infinite 0ms;
-  animation: fx 1000ms ease infinite 0ms;
-}
-
-.dot:nth-child(2) {
-  -webkit-animation: fx 1000ms ease infinite 300ms;
-  animation: fx 1000ms ease infinite 300ms;
-}
-
-.dot:nth-child(3) {
-  -webkit-animation: fx 1000ms ease infinite 600ms;
-  animation: fx 1000ms ease infinite 600ms;
-}
-
-@-webkit-keyframes fx {
-  50% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes fx {
-  50% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
 }
 
 /*

@@ -1,20 +1,11 @@
 /*
-Global variables
+Send message
 */
-var user = document.getElementById("profile-name");
 var msgInputArea = document.getElementById("msg-input-area");
 var msgInputBtn = document.getElementById("msg-input-btn");
-/*
-Run
-*/
-function run() {
-	var msgBody = document.getElementsByClassName('msg-body')[0];
-	msgBody.addEventListener('click', editClickEvent);
-	// load();
-}
-/*
-Send created message by pressing ctrl+enter
-*/
+
+var isEditMessage = false;
+
 msgInputArea.addEventListener('keydown', function(e) {
 	if(e.keyCode == 13 && e.ctrlKey) {
 		if(this.value === "") 
@@ -57,115 +48,36 @@ msgInputBtn.addEventListener('click', function() {
 	return false;
 }, true);
 
-/*
-Send message
-*/
 function sendMessage(value) {
-	if(!value)
+	if(!value) {
 		return;
-
-	var message = createMessage(value);
-	var messages = document.getElementsByClassName("chat-list")[0];
-
-	messages.appendChild(message);
-
-	document.body.scrollTop = document.body.scrollHeight - document.body.clientHeight;
-}
-/*
-Create message
-*/
-function createMessage(value) {
-	var message = createMessageContainer();
-	var author = createAuthor();
-	var doubleDot = createDoubleDot();
-	var editbtn = createEditbtn();
-	var text = createText(value);
-	var date = createDate();
-
-	var li = document.createElement("li");
-	li.appendChild(author);
-	li.appendChild(doubleDot);
-	li.appendChild(editbtn);
-	li.appendChild(text);
-	li.appendChild(date);
-	
-	message.appendChild(li);
-
-	return message;
-}
-
-function createMessageContainer() {
-	var div = document.createElement("div");
-	div.className = "msg";
-	div.id = "my-msg";
-	return div;
-}
-
-function createAuthor() {
-	var div = document.createElement("div");
-	div.className = "author";
-	div.textContent = user.textContent;
-	return div;
-}
-
-function createDoubleDot() {
-	var span = document.createElement("span");
-	span.className = "double-dot";
-	span.textContent = ":";
-	return span;
-}
-
-function createText(value) {
-	var div = document.createElement("div");
-	div.className = "text";
-	div.textContent = value;
-	return div;
-}
-
-function createDate() {
-	var div = document.createElement("div");
-	div.className = "date";
-
-	var date = new Date();
-	div.textContent = formatDate(date);
-
-	return div;
-}
-
-function formatDate(date) {
-	var hour = date.getHours();
-	var minute = date.getMinutes();
-	var amPM = (hour > 11) ? "pm" : "am";
-	if(hour > 12) {
-		hour -= 12;
-	} else if(hour === 0) {
-		hour = "12";
 	}
-	if(minute < 10) {
-		minute = "0" + minute;
-	}
-	return hour + ":" + minute + amPM;
-}
 
-function createEditbtn() {
-	var div = document.createElement("div");
-	div.className = "edit-mes";
+	var message = newMessage(value, author, false, false, true);
+	messageList.push(message);
+	renderMessage(message);
 	
-	var pencil = document.createElement("i");
-	pencil.className = "fa fa-pencil";
-	var trash = document.createElement("i");
-	trash.className = "fa fa-trash";
-
-	div.appendChild(pencil);
-	div.appendChild(trash);
-
-	return div;
+	update();
 }
 
+function sendAlertMessage(text, author, type) {
+	if(!text) {
+		return;
+	}
+
+	var message = newAlertMessage(text, author, type);
+	messageList.push(message);
+	renderMessage(message);
+	
+	update();
+}
 /*
 Edit message
 */
-var isEditMessage = false;
+function addClickEvent() {
+	var msgBody = document.getElementsByClassName('msg-body')[0];
+	msgBody.addEventListener('click', editClickEvent);
+}
 
 function editClickEvent(e) {
 	var elem = e.target;
@@ -188,6 +100,7 @@ function editClickEvent(e) {
 			removeClass(li.parentElement, "active");
 		}
 	} else if(elem.className === "fa fa-trash" && !isEditMessage) {
+		console.log("delete");
 		var li = elem.offsetParent.parentElement;
 		addClass(li.parentElement, "delete");
 		deleteMessage(li.parentElement);
@@ -207,8 +120,9 @@ function getText(li) {
 
 function editMessage(text) {
 	var messages = document.getElementsByClassName("chat-list")[0];
+	var count = 0;
 	for (var i = messages.childNodes.length - 1; i >= 0; i--) {
-		if(messages.childNodes[i].className === "msg active") {
+		if(messages.childNodes[i].className === "msg my active") {
 			var li = messages.childNodes[i].firstElementChild;
 			for (var j = li.childNodes.length - 1; j >= 0; j--) {
 				if(li.childNodes[j].className === "text") {
@@ -221,9 +135,13 @@ function editMessage(text) {
 				div.className = "changed";
 				div.textContent = "Edited";
 				li.appendChild(div);	
+				messageList[messageList.length - count - 1].changed = true;
+				messageList[messageList.length - count - 1].text = text;
+				update();
 			}
 			removeClass(messages.childNodes[i], "active");
 		}
+		count++;
 	}
 }
 
@@ -243,7 +161,7 @@ function switchBtnIcon() {
 
 		removeClass(document.getElementById("msg-input-btn"), "plane");	
 		addClass(document.getElementById("msg-input-btn"), "pencil");
-		
+
 	} else {
 		removeClass(document.getElementById("paper-plane"), "fa-pencil");
 		addClass(document.getElementById("paper-plane"), "fa-paper-plane");		
@@ -270,7 +188,7 @@ cancelBtn.addEventListener("click", function(e) {
 
 	var messages = document.getElementsByClassName("chat-list")[0];
 	for (var i = messages.childNodes.length - 1; i >= 0; i--) {
-		if(messages.childNodes[i].className === "msg delete") {
+		if(messages.childNodes[i].className === "msg my delete") {
 			removeClass(messages.childNodes[i], "delete");
 			break;
 		}
@@ -284,10 +202,11 @@ deleteBtn.addEventListener("click", function(e) {
 	e.preventDefault();
 
 	var messages = document.getElementsByClassName("chat-list")[0];
+	var count = 0;
 	for (var i = messages.childNodes.length - 1; i >= 0; i--) {
-		if(messages.childNodes[i].className === "msg delete") {
+		if(messages.childNodes[i].className === "msg my delete") {
 			var li = messages.childNodes[i].firstElementChild;
-			addClass(li.parentElement, "deleted");
+			addClass(li.parentElement, "removed");
 
 			while (li.firstChild) {
 				li.removeChild(li.firstChild);
@@ -295,28 +214,18 @@ deleteBtn.addEventListener("click", function(e) {
 
 			var div = document.createElement("div");
 			div.className = "changed";
-			div.textContent = "Deleted by " + user.textContent;
+			div.textContent = "Deleted by " + author;
 
 			li.appendChild(div);
 
+			messageList[messageList.length - count - 1].removed = true;
+			update();
+
 			removeClass(messages.childNodes[i], "delete");
 		}
+		count++;
 	}
 
 	removeClass(document.getElementById("overflow"), "active");
 	removeClass(document.getElementById("dialog"), "active");
 });
-
-function createDotContainer() {
-	var div = document.createElement("div");
-	div.className = "dot-container";
-	
-	var dot;
-	for (var i = 0; i < 3; i++) {
-		dot = document.createElement("div");
-		dot.className = "dot";
-		div.appendChild(dot);
-	}
-
-	return div;
-}
