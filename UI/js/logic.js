@@ -179,7 +179,7 @@ var cancelBtn = document.getElementById("cancel");
 var deleteBtn = document.getElementById("delete");
 
 function deleteMessage(div) {
-	addClass(document.getElementById("overflow"), "active");
+	addClass(document.getElementById("overflow-background"), "active");
 	addClass(document.getElementById("dialog"), "active");
 	document.getElementById("dialog").focus();
 }
@@ -195,7 +195,7 @@ cancelBtn.addEventListener("click", function(e) {
 		}
 	}
 
-	removeClass(document.getElementById("overflow"), "active");
+	removeClass(document.getElementById("overflow-background"), "active");
 	removeClass(document.getElementById("dialog"), "active");
 });
 
@@ -227,6 +227,6 @@ deleteBtn.addEventListener("click", function(e) {
 		count++;
 	}
 
-	removeClass(document.getElementById("overflow"), "active");
+	removeClass(document.getElementById("overflow-background"), "active");
 	removeClass(document.getElementById("dialog"), "active");
 });

@@ -57,32 +57,35 @@ function createMessageContainer(isMy) {
 	return div;
 }
 
-function createAuthor(author) {
-	var div = document.createElement("div");
-	div.className = "author";
-	div.textContent = author;
+function createElem(divType, className, textContent) {
+	var div = document.createElement(divType);
+	div.className = className;
+	div.textContent = textContent;
 	return div;
+}
+
+function createAuthor(author) {
+	return createElem("div", "author", author);
 }
 
 function createDoubleDot() {
-	var span = document.createElement("span");
-	span.className = "double-dot";
-	span.textContent = ":";
-	return span;
+	return createElem("span", "double-dot", ":");
 }
 
 function createText(value) {
-	var div = document.createElement("div");
-	div.className = "text";
-	div.textContent = value;
-	return div;
+	return createElem("div", "text", value);
+}
+
+function createChangedLabel() {
+	return createElem("div", "changed", "Edited");
+}
+
+function createDeleteLabel() {
+	return createElem("div", "changed", "Deleted by " + author);
 }
 
 function createDate(date) {
-	var div = document.createElement("div");
-	div.className = "date";
-	div.textContent = formatDate(new Date(date));
-	return div;
+	return createElem("div", "date", formatDate(new Date(date)));
 }
 
 function formatDate(date) {
@@ -109,21 +112,6 @@ function createEditbtn() {
 
 	return div;
 }
-
-function createChangedLabel() {
-	var div = document.createElement("div");
-	div.className = "changed";
-	div.textContent = "Edited";
-	return div;
-}
-
-function createDeleteLabel() {
-	var div = document.createElement("div");
-	div.className = "changed";
-	div.textContent = "Deleted by " + author;
-	return div;
-}
-
 /*
 Alert
 */
