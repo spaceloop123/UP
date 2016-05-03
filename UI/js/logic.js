@@ -56,7 +56,7 @@ function sendMessage(value) {
 	var message = newMessage(value, author, false, false, true);
 	messageList.push(message);
 	renderMessage(message);
-	
+
 	update();
 }
 
@@ -71,6 +71,7 @@ function sendAlertMessage(text, author, type) {
 	
 	update();
 }
+
 /*
 Edit message
 */
