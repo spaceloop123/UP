@@ -1,5 +1,3 @@
-(function (window, document) {
-
 /*
 Side menu in mobile and tablet version
 */
@@ -91,5 +89,3 @@ function finishEdit() {
   
   clearTimeout(delay);
 }
-
-}(this, this.document));

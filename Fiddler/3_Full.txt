@@ -1,0 +1,12 @@
+POST http://192.168.0.100:999/chat HTTP/1.1
+Host: 192.168.0.100:999
+Content-Length: 21
+
+{"message" : "pisya"}
+HTTP/1.1 200 OK
+Date: Sun, 22 May 2016 10:04:03 GMT
+Transfer-encoding: chunked
+Access-control-allow-origin: *
+
+0
+
