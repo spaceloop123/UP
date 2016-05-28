@@ -57,10 +57,10 @@ function createMessageContainer(isMy) {
 	return div;
 }
 
-function createElem(divType, className, textContent) {
+function createElem(divType, className, innerText) {
 	var div = document.createElement(divType);
 	div.className = className;
-	div.textContent = textContent;
+	div.innerText = innerText;
 	return div;
 }
 
@@ -110,31 +110,5 @@ function createEditbtn() {
 	div.appendChild(pencil);
 	div.appendChild(trash);
 
-	return div;
-}
-/*
-Alert
-*/
-function createAlertMessage(elem) {
-	var message = createAlertMessageContainer(elem.type);
-	var author = createAuthor(elem.author);
-	var doubleDot = createDoubleDot();
-	var text = createText(elem.text);
-	var date = createDate(elem.timestamp);
-
-	var li = document.createElement("li");
-	li.appendChild(author);
-	li.appendChild(doubleDot);
-	li.appendChild(text);
-	li.appendChild(date);
-
-	message.appendChild(li);
-
-	return message;
-}
-
-function createAlertMessageContainer(type) {
-	var div = document.createElement("div");
-	div.className = "msg alert alert-" + type;
 	return div;
 }
