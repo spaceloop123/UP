@@ -51,3 +51,8 @@
 
 + Added Local Storage
 + Clean-up code
+
+##UI 1.5
+
++ Removed Local Storage
++ Added Ajax (GET and POST requests)
