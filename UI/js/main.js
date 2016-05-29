@@ -13,6 +13,8 @@ var gAuthor = document.getElementById("profile-name").innerText;
 Run
 */
 function run() {
+	logic();
+
 	loadMessages(function(){
 		render(Application);
 	});
@@ -21,12 +23,14 @@ function run() {
 /*
 New message
 */
-function newMessage(text) {
+function newMessage(text, edited, removed) {
 	return {
 		id: '' + uniqueId(),
 		author: gAuthor,
 		text: text,
-		timestamp: new Date().getTime()
+		timestamp: new Date().getTime(),
+		edited: !!edited,
+		removed: !!removed
 	};
 }
 
@@ -52,6 +56,18 @@ function loadMessages(done) {
 	});
 }
 
+function addMessage(text, done) {
+	if(text == '' || text == null)
+		return;
+
+	var message = newMessage(text, false, false);
+
+	ajax('POST', Application.mainUrl, JSON.stringify(message), function(){
+		Application.messageList.push(message);
+		done();
+	});
+}
+
 function deleteMessage(id, done) {
 	var index = indexById(Application.messageList, id);
 	var message = Application.messageList[index];
@@ -60,21 +76,9 @@ function deleteMessage(id, done) {
 	};
 
 	ajax('DELETE', Application.mainUrl, JSON.stringify(messageToDelete), function(){
-		Application.messageList.splice(index, 1);
+		message.remove = !message.remove;
 		done();
 	});	
-}
-
-function addMessage(text, done) {
-	if(text == '' || text == null)
-		return;
-
-	var message = newMessage(text);
-
-	ajax('POST', Application.mainUrl, JSON.stringify(message), function(){
-		Application.messageList.push(message);
-		done();
-	});
 }
 
 function editMessage(id, done) {
@@ -86,7 +90,7 @@ function editMessage(id, done) {
 	};
 
 	ajax('PUT', Application.mainUrl, JSON.stringify(messageToPut), function(){
-		message.done = !message.done;
+		message.edited = !message.edited;
 		done();
 	});
 }
@@ -108,10 +112,9 @@ function render(root) {
 
 function renderMessage(element, message){
 	element.setAttribute('data-msg-id', message.id);
-
-	element.getElementsByClassName("author")[0].innerText = message.author;
-	element.getElementsByClassName("text")[0].innerText = message.text;
-	element.getElementsByClassName("date")[0].innerText = formatDate(new Date(message.timestamp));
+	if (message.removed) {
+		addClass(element, "removed");
+	}
 }
 
 function updateList(element, itemMap) {

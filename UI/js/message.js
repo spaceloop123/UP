@@ -1,37 +1,30 @@
 /*
 Message
 */
-function createMessage(elem) {
-	var message = createMessageContainer(elem.isMy);
+function createMessage(elem) {	
+	var message = createMessageContainer();
 	var li = document.createElement("li");
-	if(elem.removed) {
-		message.appendChild(createRemovedMessage(li));
-		addClass(message, "removed");
+	
+	if (elem.removed) {
+		li = createRemovedMessage(li, elem.author);
+		message.appendChild(li);
 		return message;
 	}
-	var changed;
-	if(elem.changed) {
-		changed = createChangedLabel();
-	}
+
 	var author = createAuthor(elem.author);
 	var doubleDot = createDoubleDot();
-	var editbtn;
-	if(elem.isMy) { 
-		editbtn = createEditbtn(); 
-	}
+	var editbtn = createEditBtn(); 
 	var text = createText(elem.text);
 	var date = createDate(elem.timestamp);
 
-	var li = document.createElement("li");
 	li.appendChild(author);
 	li.appendChild(doubleDot);
-	if(elem.isMy) {
-		li.appendChild(editbtn);
-	}
+	li.appendChild(editbtn);
 	li.appendChild(text);
 	li.appendChild(date);
-	if(elem.changed) {
-		li.appendChild(changed);
+
+	if (elem.edited) {
+		li.appendChild(createEditedLabel());
 	}
 
 	message.appendChild(li);
@@ -39,21 +32,15 @@ function createMessage(elem) {
 	return message;
 }
 
-function createRemovedMessage(li) {
-	var label = createDeleteLabel();
-
+function createRemovedMessage(li, author) {
+	var label = createDeleteLabel(author);
 	li.appendChild(label);
-
 	return li;	
 }
 
-function createMessageContainer(isMy) {
+function createMessageContainer() {
 	var div = document.createElement("div");
-	if(!isMy) {
-		div.className = "msg";
-	} else {
-		div.className = "msg my";
-	}
+	div.className = "msg";
 	return div;
 }
 
@@ -76,11 +63,11 @@ function createText(value) {
 	return createElem("div", "text", value);
 }
 
-function createChangedLabel() {
-	return createElem("div", "changed", "Edited");
+function createEditedLabel() {
+	return createElem("div", "changed", "Edited by author");
 }
 
-function createDeleteLabel() {
+function createDeleteLabel(author) {
 	return createElem("div", "changed", "Deleted by " + author);
 }
 
@@ -98,7 +85,7 @@ function formatDate(date) {
 	return hour + ":" + minute + amPM;
 }
 
-function createEditbtn() {
+function createEditBtn() {
 	var div = document.createElement("div");
 	div.className = "edit-mes";
 	
